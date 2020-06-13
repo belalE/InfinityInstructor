@@ -15,6 +15,15 @@
 		8B3F3DFD2494560E005A3213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B3F3DFB2494560E005A3213 /* LaunchScreen.storyboard */; };
 		8B3F3E082494560E005A3213 /* InfinityInstructorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E072494560E005A3213 /* InfinityInstructorTests.swift */; };
 		8B3F3E132494560E005A3213 /* InfinityInstructorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E122494560E005A3213 /* InfinityInstructorUITests.swift */; };
+		8B3F3E2224945680005A3213 /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2124945680005A3213 /* Class.swift */; };
+		8B3F3E242494578E005A3213 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E232494578E005A3213 /* Unit.swift */; };
+		8B3F3E26249457CA005A3213 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E25249457CA005A3213 /* Test.swift */; };
+		8B3F3E2824945936005A3213 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2724945936005A3213 /* Set.swift */; };
+		8B3F3E2A24945A0E005A3213 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2924945A0E005A3213 /* Card.swift */; };
+		8B3F3E2C24949CF6005A3213 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2B24949CF6005A3213 /* HomeView.swift */; };
+		8B3F3E2E24949D03005A3213 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2D24949D03005A3213 /* SettingsView.swift */; };
+		8B3F3E3024949ECF005A3213 /* StudyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2F24949ECF005A3213 /* StudyItem.swift */; };
+		8B3F3E342494A52E005A3213 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E332494A52E005A3213 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +58,15 @@
 		8B3F3E0E2494560E005A3213 /* InfinityInstructorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfinityInstructorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B3F3E122494560E005A3213 /* InfinityInstructorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfinityInstructorUITests.swift; sourceTree = "<group>"; };
 		8B3F3E142494560E005A3213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B3F3E2124945680005A3213 /* Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
+		8B3F3E232494578E005A3213 /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
+		8B3F3E25249457CA005A3213 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		8B3F3E2724945936005A3213 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
+		8B3F3E2924945A0E005A3213 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		8B3F3E2B24949CF6005A3213 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8B3F3E2D24949D03005A3213 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8B3F3E2F24949ECF005A3213 /* StudyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyItem.swift; sourceTree = "<group>"; };
+		8B3F3E332494A52E005A3213 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +97,7 @@
 		8B3F3DE42494560C005A3213 = {
 			isa = PBXGroup;
 			children = (
+				8B3F3E332494A52E005A3213 /* DateExtension.swift */,
 				8B3F3DEF2494560C005A3213 /* InfinityInstructor */,
 				8B3F3E062494560E005A3213 /* InfinityInstructorTests */,
 				8B3F3E112494560E005A3213 /* InfinityInstructorUITests */,
@@ -100,8 +119,12 @@
 			isa = PBXGroup;
 			children = (
 				8B3F3DF02494560C005A3213 /* AppDelegate.swift */,
+				8B3F3E2F24949ECF005A3213 /* StudyItem.swift */,
+				8B3F3E2024945657005A3213 /* Models */,
 				8B3F3DF22494560C005A3213 /* SceneDelegate.swift */,
 				8B3F3DF42494560C005A3213 /* ContentView.swift */,
+				8B3F3E2B24949CF6005A3213 /* HomeView.swift */,
+				8B3F3E2D24949D03005A3213 /* SettingsView.swift */,
 				8B3F3DF62494560E005A3213 /* Assets.xcassets */,
 				8B3F3DFB2494560E005A3213 /* LaunchScreen.storyboard */,
 				8B3F3DFE2494560E005A3213 /* Info.plist */,
@@ -134,6 +157,18 @@
 				8B3F3E142494560E005A3213 /* Info.plist */,
 			);
 			path = InfinityInstructorUITests;
+			sourceTree = "<group>";
+		};
+		8B3F3E2024945657005A3213 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B3F3E2124945680005A3213 /* Class.swift */,
+				8B3F3E232494578E005A3213 /* Unit.swift */,
+				8B3F3E25249457CA005A3213 /* Test.swift */,
+				8B3F3E2724945936005A3213 /* Set.swift */,
+				8B3F3E2924945A0E005A3213 /* Card.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,9 +302,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3F3E2C24949CF6005A3213 /* HomeView.swift in Sources */,
+				8B3F3E342494A52E005A3213 /* DateExtension.swift in Sources */,
+				8B3F3E242494578E005A3213 /* Unit.swift in Sources */,
+				8B3F3E2224945680005A3213 /* Class.swift in Sources */,
 				8B3F3DF12494560C005A3213 /* AppDelegate.swift in Sources */,
+				8B3F3E3024949ECF005A3213 /* StudyItem.swift in Sources */,
+				8B3F3E2824945936005A3213 /* Set.swift in Sources */,
+				8B3F3E2E24949D03005A3213 /* SettingsView.swift in Sources */,
 				8B3F3DF32494560C005A3213 /* SceneDelegate.swift in Sources */,
 				8B3F3DF52494560C005A3213 /* ContentView.swift in Sources */,
+				8B3F3E26249457CA005A3213 /* Test.swift in Sources */,
+				8B3F3E2A24945A0E005A3213 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

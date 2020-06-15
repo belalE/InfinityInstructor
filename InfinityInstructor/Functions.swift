@@ -143,13 +143,3 @@ func shuffleOptions(card: Card) -> [String] {
     array.shuffle()
     return array
 }
-
-func howManyOfColor(set: StudySet, score: Int, index: Int) -> String {
-    var count = 0
-    for card in set.array[0...index] {
-        if card.score == score {
-            count += 1
-        }
-    }
-    return String(count)
-}

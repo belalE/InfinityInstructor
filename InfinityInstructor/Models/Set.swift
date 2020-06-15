@@ -8,37 +8,24 @@
 
 import Foundation
 
-protocol StudySet {
-    var id: Int { get set }
-    var name: String { get set }
-    var description: String { get set }
-    var score: Int { get set }
-    var date : Date { get set }
-}
-
-struct ConceptSet : StudySet {
+struct StudySet {
     var id: Int
     var name: String
     var description: String
     var score: Int
-    var array: [ConceptCard]
     var date : Date
+    var array : [Card]
+    var setType : SetType
 }
 
-struct FactSet : StudySet {
-    var id: Int
-    var name: String
-    var description: String
-    var score: Int
-    var array: [FactCard]
-    var date : Date
+extension StudySet : Equatable {
+    static func == (lhs: StudySet, rhs: StudySet) -> Bool {
+        return (lhs.id == rhs.id && lhs.name == rhs.name && lhs.description == rhs.description && lhs.score == rhs.score && lhs.date == rhs.date && lhs.array == rhs.array && lhs.setType == rhs.setType)
+    }
 }
 
-struct QuestionSet : StudySet {
-    var id: Int
-    var name: String
-    var description: String
-    var score: Int
-    var array: [QuestionCard]
-    var date : Date
+enum SetType : Int{
+    case conceptSet = 1
+    case factSet = 2
+    case questionSet = 3
 }

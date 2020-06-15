@@ -12,4 +12,6 @@ struct Test : Identifiable {
     var id: Int
     var name: String
     var description: String
+    var sets: [StudySet]
+    var date: Date
 }

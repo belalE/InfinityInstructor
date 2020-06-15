@@ -8,41 +8,24 @@
 
 import Foundation
 
-protocol Card {
-    var id: Int { get set }
-    var front: String { get set }
-    var type: CardType { get set }
-    var back: String { get set }
-    var score: Int { get set}
-}
-
-enum CardType {
-    case concept
-    case question
-    case fact
-}
-
-struct ConceptCard : Card {
+struct Card  {
     var id: Int
     var front: String
-    var type : CardType = .concept
-    var back : String
+    var back: String
     var score: Int
+    var incorrectOptions : [String]?
+    var cardType : CardType
 }
 
-struct FactCard : Card{
-    var id: Int
-    var front: String
-    var type : CardType = .fact
-    var back : String
-    var score: Int
+extension Card : Equatable {
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        return (lhs.id == rhs.id && lhs.front == rhs.front && lhs.back == rhs.back && lhs.score == rhs.score && lhs.incorrectOptions == rhs.incorrectOptions && lhs.cardType == rhs.cardType)
+    }
 }
 
-struct QuestionCard : Card{
-    var id: Int
-    var front: String
-    var type : CardType = .fact
-    var back : String
-    var incorrectOptions : [String]
-    var score: Int
+enum CardType : Int {
+    case conceptCard = 1
+    case factCard = 2
+    case questionCard = 3
 }
+

@@ -12,10 +12,12 @@ struct HomeView: View {
     var classes: [Class]
     
     var body: some View {
-        VStack {
-            StudyRow(sets: getSets(classes: classes), units: getUnits(classes: classes))
-            TestList(tests: getTests(classes: classes))
-            ClassRow(classes: classes)
+        NavigationView {
+            VStack {
+                StudyRow(sets: getSets(classes: classes), units: getUnits(classes: classes))
+                TestList(tests: getTests(classes: classes))
+                ClassRow(classes: classes)
+            }
         }
     }
 }
@@ -28,8 +30,8 @@ struct HomeView_Previews: PreviewProvider {
         let set4 = StudySet(id: 4, name: "Cells", description: "", score: 2, date: Date(timeIntervalSinceNow: 76971209), array: [Card(id: 0, front: "prokaryotes", back: "no nucleus", score: 1, incorrectOptions: nil, cardType: .factCard),Card(id: 1, front: "eukaryotes", back: "complex, and nucleus", score: 2, incorrectOptions: nil, cardType: .factCard)], setType: .factSet)
         let set5 = StudySet(id: 5, name: "Organelles", description: "", score: 1, date: Date(timeIntervalSinceNow: 213233), array: [Card(id: 0, front: "Mitochondria", back: "Powerhouse of the cell", score: 2, incorrectOptions: nil, cardType: .factCard),Card(id: 1, front: "Ribosome", back: "makes proteins", score: 2, incorrectOptions: nil, cardType: .factCard)], setType: .factSet)
         let set6 = StudySet(id: 6, name: "Evolution", description: "", score: 0, date: Date(timeIntervalSinceNow: 7078933), array: [Card(id: 0, front: "Darwin Theory", back: "Mutatated animals live and reproduce as not mutated die", score: 1, incorrectOptions: nil, cardType: .conceptCard),Card(id: 1, front: "Survival of the fittest", back: "animals best adapted live", score: 2, incorrectOptions: nil, cardType: .conceptCard)], setType: .conceptSet)
-        let studyClass2 = Class(id: 1, name: "Biology", description: "The study of life", units: [Unit(id: 0, name: "Quadratics", description: "", tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", sets: [set4,set5,set6], date: Date(timeIntervalSinceNow: -20))], sets: [set4,set5,set6])])
-        let studyClass1 = Class(id: 0, name: "Algebra", description: "Sandwich", units: [Unit(id: 0, name: "Quadratics", description: "", tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", sets: [set1,set2,set3], date: Date(timeIntervalSinceNow: -20)),Test(id: 1, name: "Semester Exam", description: "", sets: [set1, set2, set3], date: Date(timeIntervalSinceNow: 200000))], sets: [set1,set2,set3])])
+        let studyClass2 = Class(id: 1, name: "Biology", description: "The study of life", units: [Unit(id: 0, name: "Quadratics", description: "", tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", sets: [set4,set5,set6], date: Date(timeIntervalSinceNow: -2202313))], sets: [set4,set5,set6])])
+        let studyClass1 = Class(id: 4, name: "Algebra", description: "Sandwich", units: [Unit(id: 0, name: "Quadratics", description: "", tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", sets: [set1], date: Date(timeIntervalSinceNow: 23123212)),Test(id: 1, name: "Semester Exam", description: "", sets: [set1, set2, set3], date: Date(timeIntervalSinceNow: 2023200))], sets: [set1,set2,set3])])
         let classes = [studyClass1, studyClass2]
         return HomeView(classes: classes)
     }

@@ -11,9 +11,7 @@ import SwiftUI
 struct UnitItem: View {
     var unit : Unit
     var body: some View {
-        Button(action: {
-            print("hello")
-        }) {
+        NavigationLink(destination: UnitView(unit: self.unit)) {
             VStack(alignment: .leading) {
                 HStack {
                     Text("\(unit.name)")

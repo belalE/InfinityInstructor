@@ -12,9 +12,7 @@ struct ClassItem: View {
     var studyClass : Class
     
     var body: some View {
-        Button(action: {
-            print("hello")
-        }) {
+        NavigationLink(destination: ClassView(studyClass: studyClass)) {
             VStack(alignment: .leading) {
                 HStack {
                     Text("\(studyClass.name)")

@@ -33,6 +33,8 @@
 		8B622B912497008C00A1F971 /* UnitRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B622B902497008C00A1F971 /* UnitRow.swift */; };
 		8B622B932497043700A1F971 /* UnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B622B922497043700A1F971 /* UnitView.swift */; };
 		8BCF582D24957A98001CD1DA /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF582C24957A98001CD1DA /* Functions.swift */; };
+		8BECED6C2497196A00500AB9 /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BECED6B2497196A00500AB9 /* SetView.swift */; };
+		8BECED6E24972C8800500AB9 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BECED6D24972C8800500AB9 /* StudyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		8B622B902497008C00A1F971 /* UnitRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitRow.swift; sourceTree = "<group>"; };
 		8B622B922497043700A1F971 /* UnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitView.swift; sourceTree = "<group>"; };
 		8BCF582C24957A98001CD1DA /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		8BECED6B2497196A00500AB9 /* SetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetView.swift; sourceTree = "<group>"; };
+		8BECED6D24972C8800500AB9 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 			children = (
 				8B3F3DF02494560C005A3213 /* AppDelegate.swift */,
 				8B3F3E2F24949ECF005A3213 /* StudyItem.swift */,
+				8BECED6B2497196A00500AB9 /* SetView.swift */,
+				8BECED6D24972C8800500AB9 /* StudyView.swift */,
 				8B622B882496E42400A1F971 /* ClassItem.swift */,
 				8B622B8C2496FC3200A1F971 /* ClassView.swift */,
 				8B622B922497043700A1F971 /* UnitView.swift */,
@@ -348,6 +354,8 @@
 				8B3F3DF32494560C005A3213 /* SceneDelegate.swift in Sources */,
 				8B3F3DF52494560C005A3213 /* ContentView.swift in Sources */,
 				8B3F3E26249457CA005A3213 /* Test.swift in Sources */,
+				8BECED6C2497196A00500AB9 /* SetView.swift in Sources */,
+				8BECED6E24972C8800500AB9 /* StudyView.swift in Sources */,
 				8B3F3E2A24945A0E005A3213 /* Card.swift in Sources */,
 				8B622B892496E42400A1F971 /* ClassItem.swift in Sources */,
 			);

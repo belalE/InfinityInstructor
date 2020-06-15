@@ -22,6 +22,7 @@ struct StudyRow: View {
                         StudyItem(set: set, units: self.units)
                             .frame(width: 250)
                             .padding(.trailing,10)
+                            .padding(.leading,10)
                     }
                 }
                 .frame(height: 200, alignment: .center)

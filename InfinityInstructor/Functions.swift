@@ -113,5 +113,43 @@ func getEarliestTestDateFromUnit(unit: Unit) -> String {
 }
 
 func setImage(set: StudySet) -> String {
-    return "pencil.circle.fill"
+    if set.score == 0 {
+        return "pencil.circle.fill"
+    } else if set.score == 1 {
+        return "book.fill"
+    } else if set.score == 2 {
+        return "briefcase.fill"
+    }
+    return "lock.circle.fill"
+}
+
+func setTypeName(type: SetType) -> String {
+    if type == .conceptSet {
+        return "Concepts"
+    } else if type == .factSet {
+        return "Facts"
+    }
+    return "Questions"
+}
+
+func shuffleOptions(card: Card) -> [String] {
+    var array = [String]()
+    array.append(card.back)
+    if card.incorrectOptions != nil {
+        for option in card.incorrectOptions! {
+            array.append(option)
+        }
+    }
+    array.shuffle()
+    return array
+}
+
+func howManyOfColor(set: StudySet, score: Int, index: Int) -> String {
+    var count = 0
+    for card in set.array[0...index] {
+        if card.score == score {
+            count += 1
+        }
+    }
+    return String(count)
 }

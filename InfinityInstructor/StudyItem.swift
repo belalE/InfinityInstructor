@@ -13,14 +13,12 @@ struct StudyItem: View {
     var units : [Unit]
     
     var body: some View {
-        Button(action: {
-            print("hello")
-        }) {
+        NavigationLink(destination: SetView(set: set)) {
             VStack(alignment: .leading) {
                     HStack {
                         Text(set.name)
                             .foregroundColor(.black)
-                        Image(systemName: "pencil.circle.fill") //fix
+                        Image(systemName: setImage(set: set))
                         .foregroundColor(.black)
                     }
                     .frame(width: 200, height: 20, alignment: .center)

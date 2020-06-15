@@ -20,6 +20,7 @@ struct ClassRow: View {
                             ClassItem(studyClass: studyClass)
                                 .frame(width: 250)
                                 .padding(.trailing,10)
+                                .padding(.leading,10)
                         }
                     }
                     .frame(height: 200, alignment: .center)

@@ -36,7 +36,7 @@ struct ContentView_Previews: PreviewProvider {
         let set6 = StudySet(id: 6, name: "Evolution", description: "", score: 0, date: Date(timeIntervalSinceNow: 7078933), array: [Card(id: 0, front: "Darwin Theory", back: "Mutatated animals live and reproduce as not mutated die", score: 1, incorrectOptions: nil, cardType: .conceptCard),Card(id: 1, front: "Survival of the fittest", back: "animals best adapted live", score: 2, incorrectOptions: nil, cardType: .conceptCard)], setType: .conceptSet)
         let studyClass2 = Class(id: 1, name: "Biology", description: "The study of life", units: [Unit(id: 0, name: "Quadratics", description: "", tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", sets: [set4,set5,set6], date: Date(timeIntervalSinceNow: -20))], sets: [set4,set5,set6])])
         let studyClass1 = Class(id: 0, name: "Algebra", description: "Sandwich", units: [Unit(id: 0, name: "Quadratics", description: "", tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", sets: [set1,set2,set3], date: Date(timeIntervalSinceNow: -20)),Test(id: 1, name: "Semester Exam", description: "", sets: [set1, set2, set3], date: Date(timeIntervalSinceNow: 200000))], sets: [set1,set2,set3])])
-        let classes = [studyClass1]
+        let classes = [studyClass1,studyClass2]
         return ContentView(classes: classes)
     }
 }

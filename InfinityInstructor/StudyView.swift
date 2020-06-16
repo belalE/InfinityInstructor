@@ -18,17 +18,17 @@ struct StudyView: View {
     @State var green = 0
     @State var yellow = 0
     @State var red = 0
-    
-    
+    @State var isDone = false
     var body: some View {
         let flipDegrees = flipped ? 180.0 : 0
         
         return VStack{
+            NavigationLink(destination: SummaryView(set: self.set, increased: self.increased, decreased: self.decreased, stayed: self.stayed), isActive: $isDone) { EmptyView() }
             ZStack {
                 Rectangle()
                     .frame(width: 400, height: 10, alignment: .center)
                     .foregroundColor(.white)
-                Text("\(index + 1)/\(set.array.count + 1)")
+                Text("\(index + 1) / \(set.array.count)")
             }
             Spacer()
             ZStack {
@@ -61,7 +61,11 @@ struct StudyView: View {
                         }
                         self.set.array[self.index].score = 1
                         self.red += 1
-                        self.index += 1
+                        if (self.index + 1) == self.set.array.count {
+                            self.finish()
+                        } else {
+                            self.index += 1
+                        }
                     }) {
                         Text("\(self.red)")
                             .foregroundColor(.black)
@@ -83,7 +87,11 @@ struct StudyView: View {
                         }
                         self.set.array[self.index].score = 2
                         self.yellow += 1
-                        self.index += 1
+                        if (self.index + 1) == self.set.array.count {
+                            self.finish()
+                        } else {
+                            self.index += 1
+                        }
                     }) {
                         Text("\(self.yellow)")
                             .foregroundColor(.black)
@@ -105,16 +113,25 @@ struct StudyView: View {
                         }
                         self.set.array[self.index].score = 3
                         self.green += 1
-                        self.index += 1
+                        if (self.index + 1) == self.set.array.count {
+                            self.finish()
+                        } else {
+                            self.index += 1
+                        }
                     }) {
                         Text("\(self.green)")
                             .foregroundColor(.black)
                             .background(Rectangle().foregroundColor(.green).frame(width: 75, height: 75, alignment: .center).cornerRadius(15))
-                        
                     }
                 }
             }
         }
+    }
+    
+    private func finish() {
+        rearrangeSet(set: self.set)
+        avgScore(set: self.set)
+        self.isDone.toggle()
     }
 }
 

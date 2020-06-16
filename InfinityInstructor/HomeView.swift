@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     var classes: [Class]
+    @State var pushed: Bool = false
     
     var body: some View {
         NavigationView {

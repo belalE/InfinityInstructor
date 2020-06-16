@@ -35,6 +35,7 @@
 		8BCF582D24957A98001CD1DA /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF582C24957A98001CD1DA /* Functions.swift */; };
 		8BECED6C2497196A00500AB9 /* SetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BECED6B2497196A00500AB9 /* SetView.swift */; };
 		8BECED6E24972C8800500AB9 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BECED6D24972C8800500AB9 /* StudyView.swift */; };
+		8BF05ABB24981818004915B9 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF05ABA24981818004915B9 /* SummaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		8BCF582C24957A98001CD1DA /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		8BECED6B2497196A00500AB9 /* SetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetView.swift; sourceTree = "<group>"; };
 		8BECED6D24972C8800500AB9 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
+		8BF05ABA24981818004915B9 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,19 +143,20 @@
 			isa = PBXGroup;
 			children = (
 				8B3F3DF02494560C005A3213 /* AppDelegate.swift */,
-				8B3F3E2F24949ECF005A3213 /* StudyItem.swift */,
-				8BECED6B2497196A00500AB9 /* SetView.swift */,
-				8BECED6D24972C8800500AB9 /* StudyView.swift */,
-				8B622B882496E42400A1F971 /* ClassItem.swift */,
-				8B622B8C2496FC3200A1F971 /* ClassView.swift */,
-				8B622B922497043700A1F971 /* UnitView.swift */,
-				8B622B8E2496FE3700A1F971 /* UnitItem.swift */,
-				8B622B902497008C00A1F971 /* UnitRow.swift */,
+				8B622B862496DCDD00A1F971 /* TestList.swift */,
 				8B622B8A2496EF7600A1F971 /* ClassRow.swift */,
 				8B622B842496CD2600A1F971 /* StudyRow.swift */,
-				8B622B862496DCDD00A1F971 /* TestList.swift */,
-				8BCF582C24957A98001CD1DA /* Functions.swift */,
+				8B622B902497008C00A1F971 /* UnitRow.swift */,
+				8B3F3E2F24949ECF005A3213 /* StudyItem.swift */,
+				8B622B882496E42400A1F971 /* ClassItem.swift */,
+				8B622B8E2496FE3700A1F971 /* UnitItem.swift */,
+				8BECED6B2497196A00500AB9 /* SetView.swift */,
+				8BECED6D24972C8800500AB9 /* StudyView.swift */,
+				8BF05ABA24981818004915B9 /* SummaryView.swift */,
+				8B622B8C2496FC3200A1F971 /* ClassView.swift */,
+				8B622B922497043700A1F971 /* UnitView.swift */,
 				8B3F3E2024945657005A3213 /* Models */,
+				8BCF582C24957A98001CD1DA /* Functions.swift */,
 				8B3F3DF22494560C005A3213 /* SceneDelegate.swift */,
 				8B3F3DF42494560C005A3213 /* ContentView.swift */,
 				8B3F3E2B24949CF6005A3213 /* HomeView.swift */,
@@ -340,6 +343,7 @@
 				8B3F3E342494A52E005A3213 /* DateExtension.swift in Sources */,
 				8B3F3E242494578E005A3213 /* Unit.swift in Sources */,
 				8B3F3E2224945680005A3213 /* Class.swift in Sources */,
+				8BF05ABB24981818004915B9 /* SummaryView.swift in Sources */,
 				8B622B8B2496EF7600A1F971 /* ClassRow.swift in Sources */,
 				8B622B932497043700A1F971 /* UnitView.swift in Sources */,
 				8B3F3DF12494560C005A3213 /* AppDelegate.swift in Sources */,
@@ -524,6 +528,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"InfinityInstructor/Preview Content\"";
+				DEVELOPMENT_TEAM = 93PCCJ5ZR5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InfinityInstructor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -543,6 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"InfinityInstructor/Preview Content\"";
+				DEVELOPMENT_TEAM = 93PCCJ5ZR5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InfinityInstructor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

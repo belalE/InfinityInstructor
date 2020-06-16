@@ -143,3 +143,42 @@ func shuffleOptions(card: Card) -> [String] {
     array.shuffle()
     return array
 }
+
+func rearrangeSet(set: StudySet) {
+    var finalArr = set.array
+    var redSet = [Card]()
+    var yellowSet = [Card]()
+    var greenSet = [Card]()
+    var greySet = [Card]()
+    for card in set.array {
+        if card.score == 0 {
+            greySet.append(card)
+        } else if card.score == 1 {
+            redSet.append(card)
+        } else if card.score == 2 {
+            yellowSet.append(card)
+        } else {
+            greenSet.append(card)
+        }
+    }
+    finalArr = redSet + yellowSet + greenSet
+}
+
+func numColor(set: StudySet, color: Int) -> String {
+    var count = 0
+    for card in set.array {
+        if card.score == color {
+            count += 1
+        }
+    }
+    return String(count)
+}
+
+func avgScore(set: StudySet) {
+    var score = set.score
+    var count = 0
+    for card in set.array {
+        count += card.score
+    } 
+    score = count / set.array.count
+}

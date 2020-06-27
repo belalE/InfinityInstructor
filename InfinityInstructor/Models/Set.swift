@@ -13,19 +13,19 @@ struct StudySet {
     var name: String
     var description: String
     var score: Int
-    var date : Date
+    var date : Date //change to dates
     var array : [Card]
     var setType : SetType
+    var nextDate : Date
 }
 
 extension StudySet : Equatable {
     static func == (lhs: StudySet, rhs: StudySet) -> Bool {
-        return (lhs.id == rhs.id && lhs.name == rhs.name && lhs.description == rhs.description && lhs.score == rhs.score && lhs.date == rhs.date && lhs.array == rhs.array && lhs.setType == rhs.setType)
+        return (lhs.id == rhs.id && lhs.name == rhs.name && lhs.description == rhs.description && lhs.score == rhs.score && lhs.date == rhs.date && lhs.array == rhs.array && lhs.setType == rhs.setType && lhs.nextDate == rhs.nextDate)
     }
 }
 
 enum SetType : Int{
-    case conceptSet = 1
-    case factSet = 2
-    case questionSet = 3
+    case factSet = 1
+    case questionSet = 2
 }

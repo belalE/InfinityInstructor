@@ -124,9 +124,7 @@ func setImage(set: StudySet) -> String {
 }
 
 func setTypeName(type: SetType) -> String {
-    if type == .conceptSet {
-        return "Concepts"
-    } else if type == .factSet {
+    if type == .factSet {
         return "Facts"
     }
     return "Questions"
@@ -181,4 +179,98 @@ func avgScore(set: StudySet) {
         count += card.score
     } 
     score = count / set.array.count
+}
+
+func setNextDate(set: StudySet, units: [Unit]) {
+    var dayArray = [1,3,7,14,30]
+    var studySet = set
+    let diffInDays = Calendar.current.dateComponents([.day], from: set.date, to: Date(timeIntervalSinceNow: 0)).day
+    
+    // TestDate
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM/dd/YYYY"
+    var testDate : Date?
+    let dateString = hasTest(set: studySet, units: units)
+    if dateString != "No Test" {
+        testDate = dateFormatter.date(from: dateString)
+    }
+    
+    //maybe array of dates
+    
+    if testDate != nil {
+        if studySet.score == 0 {
+            
+        } else if studySet.score == 1 {
+            
+        } else if studySet.score == 2 {
+            
+        } else if studySet.score == 3 {
+            
+        }
+    } else {
+        if studySet.score == 0 {
+            
+        } else if studySet.score == 1 {
+            
+        } else if studySet.score == 2 {
+            
+        } else if studySet.score == 3 {
+            
+        }
+    }
+    
+    
+}
+
+func setToRecommendation(set: StudySet) -> String {
+    if set.score == 1 {
+        return "Study again today."
+    } else if set.score == 2 {
+        return "Study again tomorrow"
+    } else if set.score == 3 {
+        return "Study again tomorrow"
+    }
+    return "Study again after a short break."
+}
+
+func rearrangeSets(sets: [StudySet],units: [Unit]) {
+    var initial = sets
+    var testArr = [StudySet]()
+    var redArr = [StudySet]()
+    var yellowArr = [StudySet]()
+    var greenArr = [StudySet]()
+    var greyArr = [StudySet]()
+    
+    for set in initial {
+        if hasTest(set: set, units: units) != "No Test" {
+            testArr.append(set)
+        } else if set.score == 0 {
+            greyArr.append(set)
+        } else if set.score == 1 {
+            redArr.append(set)
+        } else if set.score == 2 {
+            yellowArr.append(set)
+        } else if set.score == 3 {
+            greenArr.append(set)
+        }
+    }
+    //hasTest, date, score
+    //try score system
+    
+    greyArr = greyArr.sorted(by: { $0.date.compare($1.date) == .orderedAscending})
+    redArr = redArr.sorted(by: { $0.date.compare($1.date) == .orderedAscending})
+    yellowArr = yellowArr.sorted(by: { $0.date.compare($1.date) == .orderedAscending})
+    greenArr = greenArr.sorted(by: { $0.date.compare($1.date) == .orderedAscending})
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM/dd/YYYY"
+    
+    testArr = testArr.sorted(by: { dateFormatter.date(from: hasTest(set: $0, units: units))?.compare(dateFormatter.date(from: hasTest(set: $1, units: units))!) == .orderedAscending})
+    
+    //red-green test now
+    //red-green test later
+    // red - green
+    //dateNext system
+    
+    
 }

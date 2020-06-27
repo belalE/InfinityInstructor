@@ -24,8 +24,7 @@ extension Card : Equatable {
 }
 
 enum CardType : Int {
-    case conceptCard = 1
-    case factCard = 2
-    case questionCard = 3
+    case factCard = 1
+    case questionCard = 2
 }
 

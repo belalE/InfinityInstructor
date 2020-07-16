@@ -85,7 +85,6 @@ struct SummaryView: View {
             Group {
                 Text("Score:\(self.set.score)")
                     .foregroundColor(scoreToColor(score: self.set.score))
-                Text("Recommendation: \(setToRecommendation(set: self.set))")
             }
             
             Spacer()

@@ -131,7 +131,6 @@ struct StudyView: View {
     private func finish() {
         rearrangeSet(set: self.set)
         avgScore(set: self.set)
-        setNextDate(set: self.set)
         self.isDone.toggle()
     }
 }

@@ -10,15 +10,15 @@ import Foundation
 import SwiftUI
 
 func hasTest(set: StudySet, units: [Unit]) -> String {
-    for unit in units {
-        for test in unit.tests {
-            for testSet in test.sets {
-                if testSet == set  {
-                    return test.date.toString(dateFormat: "MM/dd/YYYY")
-                }
-            }
-        }
-    }
+//    for unit in units {
+//        for test in unit.tests {
+//            for testSet in test.sets {
+//                if testSet == set  {
+//                    return test.date.toString(dateFormat: "MM/dd/YYYY")
+//                }
+//            }
+//        }
+//    }
     return "No Test"
 }
 
@@ -130,13 +130,11 @@ func setTypeName(type: SetType) -> String {
     return "Questions"
 }
 
-func shuffleOptions(card: Card) -> [String] {
+func shuffleOptions(card: MultipleChoiceCard) -> [String] {
     var array = [String]()
-    array.append(card.back)
-    if card.incorrectOptions != nil {
-        for option in card.incorrectOptions! {
-            array.append(option)
-        }
+    array.append(card.correct)
+    for option in card.incorrectOptions {
+        array.append(option)
     }
     array.shuffle()
     return array
@@ -278,7 +276,7 @@ func avgScore(set: StudySet) {
 func stringToDate(str: String)-> Date {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MM/dd/YYYY"
-    var date = dateFormatter.date(from: str)!
+    let date = dateFormatter.date(from: str)!
     return date
 }
 
@@ -289,7 +287,7 @@ func orderClasses(classes: [Class]) {
 }
 
 func orderSets(studyClass: Class) -> [StudySet] {
-    var sets = getSets(classes: [studyClass])
+    let sets = getSets(classes: [studyClass])
     var tested = [StudySet]()
     for studySet in sets {
         if hasTest(set: studySet, units: studyClass.units) != "No Test" && stringToDate(str: hasTest(set: studySet, units: studyClass.units)).compare(Date(timeIntervalSinceNow: 200000)) == .orderedAscending {
@@ -312,6 +310,6 @@ func orderSets(studyClass: Class) -> [StudySet] {
             green.append(studySet)
         }
     }
-    var arr = gray + red + yellow + green
+    let arr = gray + red + yellow + green
     return arr
 }

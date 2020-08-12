@@ -34,12 +34,7 @@ struct StudyView: View {
             ZStack {
                 Image("wood")
                     .resizable()
-                ZStack() {
-                    Text(set.array[index].front).placedOnCard(Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
-                    Text(set.array[index].back).placedOnCard(scoreToColor(score: set.array[index].score)).flipRotate(-180 + flipDegrees).opacity(flipped ? 1.0 : 0.0)
-                }
-                .animation(.easeInOut(duration: 0.5))
-                .onTapGesture { self.flipped.toggle() }
+                CardView(card: set.array[index], flipped: $flipped)
             }
             Spacer()
             ZStack{
@@ -137,7 +132,7 @@ struct StudyView: View {
 
 struct StudyView_Previews: PreviewProvider {
     static var previews: some View {
-        StudyView(set: StudySet(id: 0, name: "Quadratics", description: "", score: 1, date: Date(timeIntervalSinceNow: 300), array: [Card(id: 0, front: "Vertex Form", back: "A form for a quadratic equation that shows the vertex.", score: 2, incorrectOptions: nil, cardType: .factCard),Card(id: 1, front: "Vertical Shift", back: "This is what happens when you change k. It raises or lowers the graph.", score: 3, incorrectOptions: nil, cardType: .factCard),Card(id: 2, front: "Zeros of a function", back: "The x-values where a function crosses the x-axis ", score: 1, incorrectOptions: nil, cardType: .factCard)], setType: .factSet, nextDate: Date(timeIntervalSinceNow: 403432323232343)), index: 0)
+        StudyView(set: StudySet(id: 0, name: "Quadratics", description: "", score: 1, date: Date(timeIntervalSinceNow: 300), array: [RegularCard(id: 0, front: "Vertex Form", back: "A form for a quadratic equation that shows the vertex.", score: 2),RegularCard(id: 1, front: "Vertical Shift", back: "This is what happens when you change k. It raises or lowers the graph.", score: 3),RegularCard(id: 2, front: "Zeros of a function", back: "The x-values where a function crosses the x-axis ", score: 1), MultipleChoiceCard(id: 0, front: "2x = 6 ", correct: "x = 3", score: 2, incorrectOptions: ["x=2", "x=-2","x=-3"]), BulletedCard(id: 0, front: "types of function", score: 1, bullets: ["linear","Quadratic","Exponential","Cubic", "Reciprocal","Square Root"]),NumberedCard(id: 0, front: "Levels of Organization within Organism", score: 1, list: ["cell","tissue","organ","Organ System"]), AcronymCard(id: 0, front: "PMAT", score: 2, meaning: ["Prophase","Metaphase","Anaphase","Telophase"]), ImageCard(id: 0, front: "Parabola", score: 2, image: "parabola")], setType: .factSet, nextDate: Date(timeIntervalSinceNow: 403432323232343)), index: 0)
     }
 }
 

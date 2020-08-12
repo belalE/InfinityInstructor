@@ -19,13 +19,19 @@ struct StudySet {
     var nextDate : Date
 }
 
-extension StudySet : Equatable {
-    static func == (lhs: StudySet, rhs: StudySet) -> Bool {
-        return (lhs.id == rhs.id && lhs.name == rhs.name && lhs.description == rhs.description && lhs.score == rhs.score && lhs.date == rhs.date && lhs.array == rhs.array && lhs.setType == rhs.setType && lhs.nextDate == rhs.nextDate)
-    }
-}
+//extension StudySet : Equatable {
+//    static func == (lhs: StudySet, rhs: StudySet) -> Bool {
+//        return (lhs.id == rhs.id && lhs.name == rhs.name && lhs.description == rhs.description && lhs.score == rhs.score && lhs.date == rhs.date && lhs.array == rhs.array && lhs.setType == rhs.setType && lhs.nextDate == rhs.nextDate)
+//    }
+//}
 
 enum SetType : Int{
     case factSet = 1
     case questionSet = 2
 }
+
+//extension Array where Self == Array<Card> {
+//    static func == (lhs: Array<Card>, rhs: Array<Card>) -> Bool {
+//        return (lhs == rhs)
+//    }
+//}

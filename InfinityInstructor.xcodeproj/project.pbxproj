@@ -27,6 +27,11 @@
 		8B3F3E2E24949D03005A3213 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2D24949D03005A3213 /* SettingsView.swift */; };
 		8B3F3E3024949ECF005A3213 /* StudyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2F24949ECF005A3213 /* StudyItem.swift */; };
 		8B3F3E342494A52E005A3213 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E332494A52E005A3213 /* DateExtension.swift */; };
+		8B5DA4D324E483A500EBFABF /* AddClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DA4D224E483A500EBFABF /* AddClassView.swift */; };
+		8B5DA4D524E483AF00EBFABF /* AddUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DA4D424E483AF00EBFABF /* AddUnitView.swift */; };
+		8B5DA4D724E483B700EBFABF /* AddSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DA4D624E483B700EBFABF /* AddSetView.swift */; };
+		8B5DA4D924E483C000EBFABF /* AddTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DA4D824E483C000EBFABF /* AddTestView.swift */; };
+		8B5DA4DB24E491ED00EBFABF /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DA4DA24E491ED00EBFABF /* ViewRouter.swift */; };
 		8B622B852496CD2600A1F971 /* StudyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B622B842496CD2600A1F971 /* StudyRow.swift */; };
 		8B622B872496DCDD00A1F971 /* TestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B622B862496DCDD00A1F971 /* TestList.swift */; };
 		8B622B892496E42400A1F971 /* ClassItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B622B882496E42400A1F971 /* ClassItem.swift */; };
@@ -90,6 +95,11 @@
 		8B3F3E2D24949D03005A3213 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8B3F3E2F24949ECF005A3213 /* StudyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyItem.swift; sourceTree = "<group>"; };
 		8B3F3E332494A52E005A3213 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		8B5DA4D224E483A500EBFABF /* AddClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassView.swift; sourceTree = "<group>"; };
+		8B5DA4D424E483AF00EBFABF /* AddUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUnitView.swift; sourceTree = "<group>"; };
+		8B5DA4D624E483B700EBFABF /* AddSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetView.swift; sourceTree = "<group>"; };
+		8B5DA4D824E483C000EBFABF /* AddTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTestView.swift; sourceTree = "<group>"; };
+		8B5DA4DA24E491ED00EBFABF /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		8B622B842496CD2600A1F971 /* StudyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRow.swift; sourceTree = "<group>"; };
 		8B622B862496DCDD00A1F971 /* TestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestList.swift; sourceTree = "<group>"; };
 		8B622B882496E42400A1F971 /* ClassItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassItem.swift; sourceTree = "<group>"; };
@@ -168,11 +178,13 @@
 				8B622B922497043700A1F971 /* UnitView.swift */,
 				8B87F1F324E1E3F0008B5DE9 /* RowViews */,
 				8B87F1F224E1E3E0008B5DE9 /* ItemViews */,
+				8B5DA4D124E4837E00EBFABF /* AddViews */,
 				8B87F1E924E1DEE2008B5DE9 /* CardViews */,
 				8B3F3E2024945657005A3213 /* Models */,
 				8BCF582C24957A98001CD1DA /* Functions.swift */,
 				8B3F3DF22494560C005A3213 /* SceneDelegate.swift */,
 				8B3F3DF42494560C005A3213 /* ContentView.swift */,
+				8B5DA4DA24E491ED00EBFABF /* ViewRouter.swift */,
 				8B3F3E2B24949CF6005A3213 /* HomeView.swift */,
 				8B3F3E2D24949D03005A3213 /* SettingsView.swift */,
 				8B3F3DF62494560E005A3213 /* Assets.xcassets */,
@@ -219,6 +231,17 @@
 				8B3F3E2924945A0E005A3213 /* Card.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8B5DA4D124E4837E00EBFABF /* AddViews */ = {
+			isa = PBXGroup;
+			children = (
+				8B5DA4D224E483A500EBFABF /* AddClassView.swift */,
+				8B5DA4D424E483AF00EBFABF /* AddUnitView.swift */,
+				8B5DA4D624E483B700EBFABF /* AddSetView.swift */,
+				8B5DA4D824E483C000EBFABF /* AddTestView.swift */,
+			);
+			path = AddViews;
 			sourceTree = "<group>";
 		};
 		8B87F1E924E1DEE2008B5DE9 /* CardViews */ = {
@@ -393,6 +416,7 @@
 				8B3F3E2224945680005A3213 /* Class.swift in Sources */,
 				8BEEFBB124E0F8D9000B9530 /* ReviewView.swift in Sources */,
 				8BF05ABB24981818004915B9 /* SummaryView.swift in Sources */,
+				8B5DA4D324E483A500EBFABF /* AddClassView.swift in Sources */,
 				8B622B8B2496EF7600A1F971 /* ClassRow.swift in Sources */,
 				8B622B932497043700A1F971 /* UnitView.swift in Sources */,
 				8B3F3DF12494560C005A3213 /* AppDelegate.swift in Sources */,
@@ -408,6 +432,7 @@
 				8B622B8D2496FC3200A1F971 /* ClassView.swift in Sources */,
 				8B3F3E2E24949D03005A3213 /* SettingsView.swift in Sources */,
 				8B21C12024E21C3A0060AF59 /* AcronymCardView.swift in Sources */,
+				8B5DA4D724E483B700EBFABF /* AddSetView.swift in Sources */,
 				8B87F1EF24E1DF3F008B5DE9 /* BulletedCardView.swift in Sources */,
 				8B3F3DF32494560C005A3213 /* SceneDelegate.swift in Sources */,
 				8B3F3DF52494560C005A3213 /* ContentView.swift in Sources */,
@@ -416,7 +441,10 @@
 				8BECED6E24972C8800500AB9 /* StudyView.swift in Sources */,
 				8B87F1ED24E1DF30008B5DE9 /* RegularCardView.swift in Sources */,
 				8B3F3E2A24945A0E005A3213 /* Card.swift in Sources */,
+				8B5DA4D924E483C000EBFABF /* AddTestView.swift in Sources */,
 				8B00C8AB24E46844008BFC22 /* CardView.swift in Sources */,
+				8B5DA4DB24E491ED00EBFABF /* ViewRouter.swift in Sources */,
+				8B5DA4D524E483AF00EBFABF /* AddUnitView.swift in Sources */,
 				8B622B892496E42400A1F971 /* ClassItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

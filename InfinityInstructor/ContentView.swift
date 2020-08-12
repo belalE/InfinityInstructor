@@ -10,20 +10,98 @@ import SwiftUI
 
 struct ContentView: View {
     var classes : [Class]
+    @State var showPopUp = false
+    @ObservedObject var viewRouter = ViewRouter()
+    
     var body: some View {
-        TabView {
-            HomeView(classes: classes)
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
+        GeometryReader { geometry in
+            VStack {
+                Spacer()
+                if self.viewRouter.currentView == "home" {
+                    HomeView(classes: self.classes)
+                } else if self.viewRouter.currentView == "settings" {
+                    SettingsView()
                 }
-            SettingsView()
-            .tabItem {
-                Image(systemName: "gear")
-                Text("Settings")
+                Spacer()
+                ZStack {
+                    if self.showPopUp {
+                        PlusMenu()
+                        .offset(y: -geometry.size.height/6)
+                    }
+                    HStack {
+                        Image(systemName: "house")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(20)
+                        .frame(width: geometry.size.width/3, height: 75)
+                        .foregroundColor(self.viewRouter.currentView == "home" ? .black : .gray)
+                        .onTapGesture {
+                              self.viewRouter.currentView = "home"
+                        }
+                        ZStack {
+                            Circle()
+                                .foregroundColor(Color.white)
+                                .frame(width: 75, height: 75)
+                            Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 75, height: 75)
+                            .foregroundColor(.blue)
+                          }
+                        .rotationEffect(Angle(degrees: self.showPopUp ? 90 : 0))
+                        .offset(y: -geometry.size.height/10/2)
+                        .onTapGesture {
+                            withAnimation {
+                                self.showPopUp.toggle()
+                            }
+                        }
+                        Image(systemName: "gear")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(20)
+                        .frame(width: geometry.size.width/3, height: 75)
+                        .foregroundColor(self.viewRouter.currentView == "settings" ? .black : .gray)
+                        .onTapGesture {
+                           self.viewRouter.currentView = "settings"
+                        }
+                    }
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height/10)
+                .background(Color.white.shadow(radius: 2))
             }
+            .edgesIgnoringSafeArea(.bottom)
         }
+//        ZStack {
+//            TabView {
+//                HomeView(classes: classes)
+//                    .tabItem {
+//                        Image(systemName: "house")
+//                        Text("Home")
+//                }
+//                SettingsView()
+//                    .tabItem {
+//                        Image(systemName: "gear")
+//                        Text("Settings")
+//                }
+//            }
+//        }
+//        .actionSheet(isPresented: $showActionSheet) { ActionSheet(title: Text("Title"), message: Text("Message"), buttons: [.default(Text("Add a Class"), action: addClass), .default(Text("Add a Unit"), action: addUnit) ,.default(Text("Add a Set"), action: addSet), .default(Text("Add a Test"), action: addTest) ,.cancel()]) }
     }
+    
+    func addClass() {
+        print("class")
+    }
+    
+    func addUnit() {
+        print("unit")
+    }
+    func addSet() {
+        print("set")
+    }
+    func addTest() {
+        print("test")
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -38,5 +116,35 @@ struct ContentView_Previews: PreviewProvider {
         let studyClass1 = Class(id: 0, name: "Algebra", description: "Sandwich", units: [Unit(id: 0, name: "Quadratics", description: "", tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", value: 1, sets: [set1,set2,set3], date: Date(timeIntervalSinceNow: -20)),Test(id: 1, name: "Semester Exam", description: "", value: 2, sets: [set1, set2, set3], date: Date(timeIntervalSinceNow: 200000))], sets: [set1,set2,set3])])
         let classes = [studyClass1,studyClass2]
         return ContentView(classes: classes)
+    }
+}
+
+struct PlusMenu: View {
+    var body: some View {
+        HStack(spacing: 50) {
+            ZStack {
+                Circle()
+                    .foregroundColor(Color.blue)
+                    .frame(width: 70, height: 70)
+                Image(systemName: "camera")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(20)
+                    .frame(width: 70, height: 70)
+                    .foregroundColor(.white)
+            }
+            ZStack {
+                Circle()
+                    .foregroundColor(Color.blue)
+                    .frame(width: 70, height: 70)
+                Image(systemName: "photo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(20)
+                    .frame(width: 70, height: 70)
+                    .foregroundColor(.white)
+            }
+        }
+        .transition(.scale)
     }
 }

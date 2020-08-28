@@ -19,8 +19,8 @@ struct StudyView: View {
     @State var yellow = 0
     @State var red = 0
     @State var isDone = false
+    @State var isReview : Bool
     var body: some View {
-        let flipDegrees = flipped ? 180.0 : 0
         
         return VStack{
             NavigationLink(destination: SummaryView(set: self.set, increased: self.increased, decreased: self.decreased, stayed: self.stayed), isActive: $isDone) { EmptyView() }
@@ -34,7 +34,7 @@ struct StudyView: View {
             ZStack {
                 Image("wood")
                     .resizable()
-                CardView(card: set.array[index], flipped: $flipped)
+                CardView(card: self.set.array[index], flipped: $flipped)
             }
             Spacer()
             ZStack{
@@ -132,7 +132,7 @@ struct StudyView: View {
 
 struct StudyView_Previews: PreviewProvider {
     static var previews: some View {
-        StudyView(set: StudySet(id: 0, name: "Quadratics", description: "", score: 1, date: Date(timeIntervalSinceNow: 300), array: [RegularCard(id: 0, front: "Vertex Form", back: "A form for a quadratic equation that shows the vertex.", score: 2),RegularCard(id: 1, front: "Vertical Shift", back: "This is what happens when you change k. It raises or lowers the graph.", score: 3),RegularCard(id: 2, front: "Zeros of a function", back: "The x-values where a function crosses the x-axis ", score: 1), MultipleChoiceCard(id: 0, front: "2x = 6 ", correct: "x = 3", score: 2, incorrectOptions: ["x=2", "x=-2","x=-3"]), BulletedCard(id: 0, front: "types of function", score: 1, bullets: ["linear","Quadratic","Exponential","Cubic", "Reciprocal","Square Root"]),NumberedCard(id: 0, front: "Levels of Organization within Organism", score: 1, list: ["cell","tissue","organ","Organ System"]), AcronymCard(id: 0, front: "PMAT", score: 2, meaning: ["Prophase","Metaphase","Anaphase","Telophase"]), ImageCard(id: 0, front: "Parabola", score: 2, image: "parabola")], setType: .factSet, nextDate: Date(timeIntervalSinceNow: 403432323232343)), index: 0)
+        StudyView(set: Constants.diverseSet, index: 0, isReview: false)
     }
 }
 
@@ -145,4 +145,12 @@ extension View {
     func placedOnCard(_ color: Color) -> some View {
         return padding(5).frame(width: 350, height: 500, alignment: .center).background(color).cornerRadius(20).overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 5))
     }
+}
+
+func getStudySet(set: StudySet, isReview: Bool) -> [Card] {
+    var arr = [Card]()
+    if isReview {
+        return getReviewArray(set: set)
+    }
+    return set.array
 }

@@ -14,9 +14,9 @@ struct ImageCardView: View {
     
     var body: some View {
         let flipDegrees = flipped ? 180.0 : 0
-        return ZStack() {
+        return ZStack {
             Text(card.front).padding(.horizontal).placedOnCard(Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
-            Image(card.image).padding(.horizontal).placedOnCard(scoreToColor(score: card.score)).flipRotate(-180 + flipDegrees).opacity(flipped ? 1.0 : 0.0).aspectRatio(contentMode: .fit)
+            Image(uiImage: card.image).padding(.horizontal).placedOnCard(scoreToColor(score: card.score)).flipRotate(-180 + flipDegrees).opacity(flipped ? 1.0 : 0.0).aspectRatio(contentMode: .fit)
         }
         .animation(.easeInOut(duration: 0.5))
         .onTapGesture { self.flipped.toggle() }
@@ -25,6 +25,6 @@ struct ImageCardView: View {
 
 struct ImageCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageCardView(flipped: .constant(false), card: ImageCard(id: 0, front: "Parabola", score: 2, image: "parabola"))
+        ImageCardView(flipped: .constant(false), card: ImageCard(id: 0, front: "Parabola", score: 2, image: UIImage(named: "parabola")!))
     }
 }

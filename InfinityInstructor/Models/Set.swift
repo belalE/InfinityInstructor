@@ -15,8 +15,6 @@ struct StudySet {
     var score: Int
     var date : Date //change to dates
     var array : [Card]
-    var setType : SetType
-    var nextDate : Date
 }
 
 //extension StudySet : Equatable {

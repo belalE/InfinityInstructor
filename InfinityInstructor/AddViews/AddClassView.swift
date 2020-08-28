@@ -9,15 +9,35 @@
 import SwiftUI
 
 struct AddClassView: View {
-    @Binding var isShowing: Bool
+    @State var name : String
+    @State var description : String
+    @State var classes: [Class]
+
     var body: some View {
-        Text("Add Class")
-        .onDisappear() { self.isShowing = false }
+        VStack {
+            Text(verbatim: "Add Class")
+            TextField("Name", text: $name)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray))
+            TextField("Description", text: $description)
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray))
+            Spacer()
+            Button(action: {
+                self.classes.append(Class(id: 0, name: self.name, description: self.description, units: []))
+            }) {
+                Text(verbatim: "Save")
+                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue).frame(width: 50,height: 30))
+                    .foregroundColor(.white)
+
+            }
+        }
+        .padding(.all)
     }
 }
 
 struct AddClassView_Previews: PreviewProvider {
     static var previews: some View {
-        AddClassView(isShowing: .constant(true))
+        return AddClassView(name: "", description: "", classes: [Constants.studyClass1,Constants.studyClass2])
     }
 }

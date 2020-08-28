@@ -19,14 +19,14 @@ struct NumberedCardView: View {
                         ForEach(0..<card.list.count) { i in
                             HStack {
                                 Text("\(i + 1): ")
-//                                TextField("Fill in", text: <#T##Binding<String>#>)
+                                TextField("Fill in", text: .constant(""))
                             }
                         }
                     }
                     .placedOnCard(Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
                     VStack {
                         ForEach(0..<card.list.count, id: \.self) { i in
-                            Text("\(i+1): \(self.card.list[i])").padding(.horizontal)
+                            Text("\(i): \(self.card.list[i])").padding(.horizontal)
                             .foregroundColor(.white)
                             .padding(.horizontal)
                             .background(Color.blue.cornerRadius(5))

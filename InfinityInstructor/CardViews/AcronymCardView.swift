@@ -20,7 +20,7 @@ struct AcronymCardView: View {
                 ForEach(card.meaning, id: \.self) { str in
                     HStack {
                         Text(String(str[str.startIndex]))
-                        //                        TextField("Fill In", text: <#T##Binding<String>#>)
+                                                TextField("Fill In", text: .constant(""))
                     }
                 }
             }

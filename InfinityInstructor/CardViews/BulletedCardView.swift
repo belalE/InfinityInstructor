@@ -20,7 +20,7 @@ struct BulletedCardView: View {
                 ForEach(1..<card.bullets.count) { int in
                     HStack {
                         Image(systemName: "circle.fill")
-//                        TextField("Fill In", text: <#T##Binding<String>#>)
+                        TextField("Fill In", text: .constant(""))
                     }
                 }
             }

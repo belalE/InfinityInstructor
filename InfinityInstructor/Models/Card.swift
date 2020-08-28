@@ -108,7 +108,7 @@ struct ImageCard : Card {
     var id: Int
     var front: String
     var score: Int
-    var image : String
+    var image : UIImage
     var cardType: CardType = .image
 }
 

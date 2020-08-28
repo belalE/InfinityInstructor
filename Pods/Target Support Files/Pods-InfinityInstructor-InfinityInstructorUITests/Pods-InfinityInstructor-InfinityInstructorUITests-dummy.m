@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_InfinityInstructor_InfinityInstructorUITests : NSObject
+@end
+@implementation PodsDummy_Pods_InfinityInstructor_InfinityInstructorUITests
+@end

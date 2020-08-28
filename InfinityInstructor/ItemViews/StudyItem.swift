@@ -44,8 +44,6 @@ struct StudyItem: View {
 
 struct StudyItem_Previews: PreviewProvider {
     static var previews: some View {
-        let set = StudySet(id: 0, name: "Quadratics", description: "", score: 3, date: Date(timeIntervalSinceNow: 300), array: [RegularCard(id: 0, front: "Vertex Form", back: "A form for a quadratic equation that shows the vertex.", score: 2), RegularCard(id: 1, front: "Vertical Shift", back: "This is what happens when you change k. It raises or lowers the graph.", score: 3), RegularCard(id: 2, front: "Zeros of a function", back: "The x-values where a function crosses the x-axis ", score: 1)], setType: .factSet, nextDate: Date(timeIntervalSinceNow: 23232131322))
-        let classes = [Class(id: 1, name: "Algebra", description: "Sandwich", units: [Unit(id: 0, name: "Quadratics", description: "", tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", value: 1, sets: [set], date: Date(timeIntervalSinceNow: -20))], sets: [set])])]
-        return StudyItem(set: set, units: getUnits(classes: classes))
+        return StudyItem(set: Constants.set1, units: [Constants.unit1, Constants.unit2])
     }
 }

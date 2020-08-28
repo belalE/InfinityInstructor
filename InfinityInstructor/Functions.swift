@@ -313,3 +313,29 @@ func orderSets(studyClass: Class) -> [StudySet] {
     let arr = gray + red + yellow + green
     return arr
 }
+
+func getNameArray(classes: [Class]) -> [String] {
+    var arr = [String]()
+    for studyClass in classes {
+        arr.append(studyClass.name)
+    }
+    return arr
+}
+
+func getNameArray(units: [Unit]) -> [String] {
+    var arr = [String]()
+    for unit in units {
+        arr.append(unit.name)
+    }
+    return arr
+}
+
+func getReviewArray(set: StudySet) -> [Card] {
+    var arr = [Card]()
+    for card in set.array {
+        if card.score == 0 || card.score == 1 || card.score == 2 {
+            arr.append(card)
+        }
+    }
+    return arr
+}

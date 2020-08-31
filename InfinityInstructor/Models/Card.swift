@@ -46,36 +46,6 @@ class Card : Codable{
 }
 
 
-//extension Card  where Self: Equatable {
-//    static func == (lhs: Card, rhs: Card) -> Bool {
-//        return (lhs.id == rhs.id && lhs.front == rhs.front && lhs.score == rhs.score && lhs.cardType == rhs.cardType)
-//    }
-//}
-
-//extension Card : Codable {
-//    enum CodingKeys : String, CodingKey {
-//        case id
-//        case front
-//        case score
-//        case cardType
-//    }
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: CodingKeys.self)
-//        try container.encode(id, forKey: .id)
-//        try container.encode(front, forKey: .front)
-//        try container.encode(score, forKey: .score)
-//        try container.encode(cardType.rawValue, forKey: .cardType)
-//    }
-//    required init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        id = try values.decode(Int.self, forKey: .id)
-//        front = try values.decode(String.self, forKey: .front)
-//        score = try values.decode(Int.self, forKey: .score)
-//        cardType = CardType(rawValue: try values.decode(String.self, forKey: .cardType))!
-//
-//    }
-//}
-
 enum CardType : String {
     case regular = "regular"
     case multipleChoice = "multipleChoice"

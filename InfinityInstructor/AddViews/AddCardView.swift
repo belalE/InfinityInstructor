@@ -67,7 +67,7 @@ struct AddRegularCardView: View {
         .publisher(for: NSNotification.Name("Save"))
     
     func save() {
-        let card = RegularCard(id: 0, front: self.front, back: self.back, score: 0)
+        let card = RegularCard(id: 0, front: self.front, score: 0, back: self.back)
         self.array.append(card)
     }
     var body: some View {
@@ -99,7 +99,7 @@ struct AddMCCardView: View {
         .publisher(for: NSNotification.Name("Save"))
     
     func save() {
-        let card = MultipleChoiceCard(id: 0, front: self.front, correct: self.correct, score: 0, incorrectOptions: [self.incorrect1, self.incorrect2, self.incorrect3])
+        let card = MultipleChoiceCard(id: 0, front: self.front, score: 0, cardType: .multipleChoice, correct: self.correct, incorrectOptions: [self.incorrect1, self.incorrect2, self.incorrect3])
         self.array.append(card)
     }
     

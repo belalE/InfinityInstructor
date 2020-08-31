@@ -44,6 +44,6 @@ struct MultipleChoiceView: View {
 
 struct MultipleChoiceView_Previews: PreviewProvider {
     static var previews: some View {
-        MultipleChoiceView(flipped: .constant(false), card: MultipleChoiceCard(id: 0, front: "2x = 6 ", correct: "x = 3", score: 2, incorrectOptions: ["x=2", "x=-2","x=-3"]))
+        MultipleChoiceView(flipped: .constant(false), card: MultipleChoiceCard(id: 0, front: "2x = 6 ", score: 2, cardType: .multipleChoice, correct: "x = 3", incorrectOptions: ["x=2", "x=-2","x=-3"]))
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import FirebaseFirestore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,6 +21,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
+        if UserDefaults.standard.object(forKey: "uid") == nil {
+            var contentView = LoginView()
+            if let windowScene = scene as? UIWindowScene {
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = UIHostingController(rootView: contentView)
+                self.window = window
+                window.makeKeyAndVisible()
+            }
+        } else {
+            var contentView = ContentView(classes: [Constants.studyClass1, Constants.studyClass2])
+             if let windowScene = scene as? UIWindowScene {
+                 let window = UIWindow(windowScene: windowScene)
+                 window.rootViewController =  UIHostingController(rootView: contentView)
+                 self.window = window
+                 window.makeKeyAndVisible()
+            }
+        }
         let contentView = ContentView(classes: [Constants.studyClass1, Constants.studyClass2])
 
         // Use a UIHostingController as window root view controller.

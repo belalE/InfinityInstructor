@@ -30,6 +30,6 @@ struct TestList: View {
 
 struct TestList_Previews: PreviewProvider {
     static var previews: some View {
-        return TestList(tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", value: 1, sets: [Constants.set1], date: Date(timeIntervalSinceNow: 200)),Test(id: 1, name: "Semester Exam", description: "", value: 3, sets: [Constants.set1,Constants.set2,Constants.set3], date: Date(timeIntervalSinceNow: 200000))])
+        return TestList(tests: [Test(id: 0, name: "Quadratics Unit Test", description: "", value: 1, date: Date(timeIntervalSinceNow: 200), sets: [Constants.set1]),Test(id: 1, name: "Semester Exam", description: "", value: 3, date: Date(timeIntervalSinceNow: 200000), sets: [Constants.set1,Constants.set2,Constants.set3])])
     }
 }

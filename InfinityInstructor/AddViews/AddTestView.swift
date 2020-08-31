@@ -14,6 +14,7 @@ struct AddTestView: View {
     @State var classes : [Class]
     @State private var selectedClassIndex : Int? = 0
     @State private var selectedUnitIndex : Int?  = 0
+    @State private var selectedValueIndex : Int?
     @State var date : Date?
     
     var body: some View {
@@ -33,11 +34,16 @@ struct AddTestView: View {
                 PickerField("Select A Unit", data: getNameArray(units: self.classes[self.selectedClassIndex!].units), selectionIndex: self.$selectedUnitIndex)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray).frame(width: 350, height: 50, alignment: .leading))
+                PickerField("Test Type", data: ["Formative", "Summative", "Exam"], selectionIndex: self.$selectedValueIndex)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray).frame(width: 350, height: 50, alignment: .leading))
                 DateField("Enter the date", date: self.$date)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray).frame(width: 350, height: 50, alignment: .leading))
+                CheckListView(checkListData: getChecklistArray(sets: self.classes[selectedClassIndex!].units[selectedUnitIndex!
+                ].sets))
                 Button(action: {
-                    self.classes[self.selectedClassIndex!].units.append(Unit(id: 0, name: self.name, description: self.description, tests: [], sets: []))
+                    self.classes[self.selectedClassIndex!].units[self.selectedUnitIndex!].tests.append(Test(id: 0, name: self.name, description: self.description, value: self.selectedValueIndex!, date: self.date!, sets: []))
                 }) {
                     Text(verbatim: "Save")
                         .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue).frame(width: 50,height: 30))

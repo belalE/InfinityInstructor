@@ -44,7 +44,7 @@ struct AddSetView: View {
                         AddCardView(cardType: .regular, array: self.$array)
                     }
                     Button(action: {
-                        self.array.append(RegularCard(id: 0, front: "", back: "", score: 0))
+                        self.array.append(RegularCard(id: 0, front: "", score: 0, back: ""))
                     }) {
                         Text(verbatim: "Add")
                             .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue).frame(width: 50,height: 30))

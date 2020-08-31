@@ -26,6 +26,6 @@ struct RegularCardView: View {
 
 struct RegularCardView_Previews: PreviewProvider {
     static var previews: some View {
-        RegularCardView(flipped: .constant(false), card: RegularCard(id: 0, front: "Vertex Form", back: "A form for a quadratic equation that shows the vertex.", score: 2))
+        RegularCardView(flipped: .constant(false), card: RegularCard(id: 0, front: "Vertex Form", score: 2, back: "A form for a quadratic equation that shows the vertex."))
     }
 }

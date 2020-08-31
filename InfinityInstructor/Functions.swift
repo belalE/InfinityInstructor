@@ -339,3 +339,12 @@ func getReviewArray(set: StudySet) -> [Card] {
     }
     return arr
 }
+
+
+func getChecklistArray(sets: [StudySet]) -> [CheckListItem] {
+    var arr = [CheckListItem]()
+    for set in sets {
+        arr.append(CheckListItem(id: 0, set: set))
+    }
+    return arr
+}

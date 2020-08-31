@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,10 @@
 		8B21C12224E21C570060AF59 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21C12124E21C570060AF59 /* ImageCardView.swift */; };
 		8B34C34624E62F0000E10C94 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B34C34524E62F0000E10C94 /* Constants.swift */; };
 		8B34C34824E64ED800E10C94 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B34C34724E64ED800E10C94 /* ImagePickerView.swift */; };
+		8B3C0E4F24F89C9600FA9B7C /* CheckListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C0E4E24F89C9600FA9B7C /* CheckListItem.swift */; };
+		8B3C0E5124F89CDC00FA9B7C /* CheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C0E5024F89CDC00FA9B7C /* CheckListView.swift */; };
+		8B3C0E5324F89DAD00FA9B7C /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C0E5224F89DAD00FA9B7C /* CheckView.swift */; };
+		8B3C0E5524F8A45100FA9B7C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C0E5424F8A45100FA9B7C /* LoginView.swift */; };
 		8B3F3DF12494560C005A3213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3DF02494560C005A3213 /* AppDelegate.swift */; };
 		8B3F3DF32494560C005A3213 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3DF22494560C005A3213 /* SceneDelegate.swift */; };
 		8B3F3DF52494560C005A3213 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3DF42494560C005A3213 /* ContentView.swift */; };
@@ -31,6 +35,7 @@
 		8B3F3E2E24949D03005A3213 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2D24949D03005A3213 /* SettingsView.swift */; };
 		8B3F3E3024949ECF005A3213 /* StudyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E2F24949ECF005A3213 /* StudyItem.swift */; };
 		8B3F3E342494A52E005A3213 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3F3E332494A52E005A3213 /* DateExtension.swift */; };
+		8B593AB924FB651800FBC2CB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B593AB824FB651800FBC2CB /* User.swift */; };
 		8B5DA4D324E483A500EBFABF /* AddClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DA4D224E483A500EBFABF /* AddClassView.swift */; };
 		8B5DA4D524E483AF00EBFABF /* AddUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DA4D424E483AF00EBFABF /* AddUnitView.swift */; };
 		8B5DA4D724E483B700EBFABF /* AddSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DA4D624E483B700EBFABF /* AddSetView.swift */; };
@@ -90,6 +95,10 @@
 		8B21C12124E21C570060AF59 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
 		8B34C34524E62F0000E10C94 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8B34C34724E64ED800E10C94 /* ImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		8B3C0E4E24F89C9600FA9B7C /* CheckListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListItem.swift; sourceTree = "<group>"; };
+		8B3C0E5024F89CDC00FA9B7C /* CheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListView.swift; sourceTree = "<group>"; };
+		8B3C0E5224F89DAD00FA9B7C /* CheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckView.swift; sourceTree = "<group>"; };
+		8B3C0E5424F8A45100FA9B7C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8B3F3DED2494560C005A3213 /* InfinityInstructor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinityInstructor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B3F3DF02494560C005A3213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B3F3DF22494560C005A3213 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +122,7 @@
 		8B3F3E2D24949D03005A3213 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8B3F3E2F24949ECF005A3213 /* StudyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyItem.swift; sourceTree = "<group>"; };
 		8B3F3E332494A52E005A3213 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		8B593AB824FB651800FBC2CB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8B5DA4D224E483A500EBFABF /* AddClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClassView.swift; sourceTree = "<group>"; };
 		8B5DA4D424E483AF00EBFABF /* AddUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUnitView.swift; sourceTree = "<group>"; };
 		8B5DA4D624E483B700EBFABF /* AddSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSetView.swift; sourceTree = "<group>"; };
@@ -195,7 +205,6 @@
 				EF8344DDF63EB661D9462CF2 /* Pods-InfinityInstructorTests.debug.xcconfig */,
 				67A631188AE3FBABB24C9ECB /* Pods-InfinityInstructorTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -238,6 +247,10 @@
 				8BC5226424F5E0630042A1FF /* PickerField.swift */,
 				8BC5226624F5E07F0042A1FF /* PickerTextField.swift */,
 				8BC5226824F5EA110042A1FF /* DateTextField.swift */,
+				8B3C0E4E24F89C9600FA9B7C /* CheckListItem.swift */,
+				8B3C0E5024F89CDC00FA9B7C /* CheckListView.swift */,
+				8B3C0E5224F89DAD00FA9B7C /* CheckView.swift */,
+				8B3C0E5424F8A45100FA9B7C /* LoginView.swift */,
 				8BC5226A24F5EA270042A1FF /* DateField.swift */,
 				8B763CC524F7731100A19F37 /* GoogleService-Info.plist */,
 				8B87F1F324E1E3F0008B5DE9 /* RowViews */,
@@ -288,6 +301,7 @@
 		8B3F3E2024945657005A3213 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8B593AB824FB651800FBC2CB /* User.swift */,
 				8B3F3E2124945680005A3213 /* Class.swift */,
 				8B3F3E232494578E005A3213 /* Unit.swift */,
 				8B3F3E25249457CA005A3213 /* Test.swift */,
@@ -586,6 +600,7 @@
 				8BC5226B24F5EA270042A1FF /* DateField.swift in Sources */,
 				8B622B852496CD2600A1F971 /* StudyRow.swift in Sources */,
 				8B3F3E2C24949CF6005A3213 /* HomeView.swift in Sources */,
+				8B3C0E4F24F89C9600FA9B7C /* CheckListItem.swift in Sources */,
 				8B3F3E342494A52E005A3213 /* DateExtension.swift in Sources */,
 				8B3F3E242494578E005A3213 /* Unit.swift in Sources */,
 				8B34C34824E64ED800E10C94 /* ImagePickerView.swift in Sources */,
@@ -602,6 +617,7 @@
 				8BC5226924F5EA110042A1FF /* DateTextField.swift in Sources */,
 				8BC5226524F5E0630042A1FF /* PickerField.swift in Sources */,
 				8BCF582D24957A98001CD1DA /* Functions.swift in Sources */,
+				8B3C0E5324F89DAD00FA9B7C /* CheckView.swift in Sources */,
 				8B3F3E3024949ECF005A3213 /* StudyItem.swift in Sources */,
 				8B87F1F124E1DF5D008B5DE9 /* NumberedCardView.swift in Sources */,
 				8B3F3E2824945936005A3213 /* Set.swift in Sources */,
@@ -611,6 +627,7 @@
 				8B34C34624E62F0000E10C94 /* Constants.swift in Sources */,
 				8B622B8D2496FC3200A1F971 /* ClassView.swift in Sources */,
 				8B3F3E2E24949D03005A3213 /* SettingsView.swift in Sources */,
+				8B3C0E5524F8A45100FA9B7C /* LoginView.swift in Sources */,
 				8B21C12024E21C3A0060AF59 /* AcronymCardView.swift in Sources */,
 				8B5DA4D724E483B700EBFABF /* AddSetView.swift in Sources */,
 				8B87F1EF24E1DF3F008B5DE9 /* BulletedCardView.swift in Sources */,
@@ -621,6 +638,8 @@
 				8BECED6E24972C8800500AB9 /* StudyView.swift in Sources */,
 				8B5DA4DD24E4A26200EBFABF /* AddCardView.swift in Sources */,
 				8B87F1ED24E1DF30008B5DE9 /* RegularCardView.swift in Sources */,
+				8B593AB924FB651800FBC2CB /* User.swift in Sources */,
+				8B3C0E5124F89CDC00FA9B7C /* CheckListView.swift in Sources */,
 				8B3F3E2A24945A0E005A3213 /* Card.swift in Sources */,
 				8B5DA4D924E483C000EBFABF /* AddTestView.swift in Sources */,
 				8B00C8AB24E46844008BFC22 /* CardView.swift in Sources */,

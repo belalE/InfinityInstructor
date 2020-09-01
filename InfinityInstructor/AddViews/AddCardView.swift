@@ -76,7 +76,7 @@ struct AddRegularCardView: View {
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray))
                 .foregroundColor(.white)
-            TextField("Back", text: $front)
+            TextField("Back", text: $back)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray))
         }

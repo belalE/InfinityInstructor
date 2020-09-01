@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    var classes: [Class]
+    @Binding var classes: [Class]
     @State var pushed: Bool = false
     
     var body: some View {
@@ -17,7 +17,7 @@ struct HomeView: View {
             Text(verbatim: "Infinity Instructor")
                 .font(.largeTitle)
             TestList(tests: getTests(classes: classes))
-            ClassRow(classes: classes)
+            ClassRow(classes: $classes)
         }
     }
     
@@ -28,6 +28,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        return HomeView(classes: [Constants.studyClass1, Constants.studyClass2])
+        return HomeView(classes: .constant([Constants.studyClass1, Constants.studyClass2]))
     }
 }

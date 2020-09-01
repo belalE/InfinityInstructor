@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ClassView: View {
-    var studyClass : Class
+    @Binding var studyClass : Class
     
     var body: some View {
         ScrollView {
@@ -18,7 +18,7 @@ struct ClassView: View {
                     .font(.largeTitle)
 //                StudyRow(sets: orderSets(studyClass: self.studyClass), units: studyClass.units)
                 TestList(tests: getTests(classes: [studyClass]))
-                UnitRow(units: studyClass.units)
+                UnitRow(units: $studyClass.units)
                 
             }
         }
@@ -27,6 +27,6 @@ struct ClassView: View {
 
 struct ClassView_Previews: PreviewProvider {
     static var previews: some View {
-        return ClassView(studyClass: Constants.studyClass1)
+        return ClassView(studyClass: .constant(Constants.studyClass1))
     }
 }

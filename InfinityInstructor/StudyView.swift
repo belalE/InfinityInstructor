@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct StudyView: View {
-    @State var set: StudySet
+    @Binding var set: StudySet
     @State var index: Int
     @State var flipped : Bool = false
     @State var increased : Int = 0
@@ -64,7 +64,7 @@ struct StudyView: View {
                     }) {
                         Text("\(self.red)")
                             .foregroundColor(.black)
-                            .background(Rectangle().foregroundColor(.red).frame(width: 75, height: 75, alignment: .center).cornerRadius(15))
+                            .background(Rectangle().foregroundColor(.red).frame(width: 60, height: 60, alignment: .center).cornerRadius(15))
                         
                     }
                     Spacer()
@@ -90,7 +90,7 @@ struct StudyView: View {
                     }) {
                         Text("\(self.yellow)")
                             .foregroundColor(.black)
-                            .background(Rectangle().foregroundColor(.yellow).frame(width: 75, height: 75, alignment: .center).cornerRadius(15))
+                            .background(Rectangle().foregroundColor(.yellow).frame(width: 60, height: 60, alignment: .center).cornerRadius(15))
                         
                     }
                     Spacer()
@@ -116,23 +116,25 @@ struct StudyView: View {
                     }) {
                         Text("\(self.green)")
                             .foregroundColor(.black)
-                            .background(Rectangle().foregroundColor(.green).frame(width: 75, height: 75, alignment: .center).cornerRadius(15))
+                            .background(Rectangle().foregroundColor(.green).frame(width: 60, height: 60, alignment: .center).cornerRadius(15))
                     }
                 }
             }
+            Spacer()
         }
     }
     
     private func finish() {
         rearrangeSet(set: self.set)
         avgScore(set: self.set)
+        NotificationCenter.default.post(name: NSNotification.Name("UpdateFirebase"), object: nil)
         self.isDone.toggle()
     }
 }
 
 struct StudyView_Previews: PreviewProvider {
     static var previews: some View {
-        StudyView(set: Constants.diverseSet, index: 0, isReview: false)
+        StudyView(set: .constant(Constants.diverseSet), index: 0, isReview: false)
     }
 }
 

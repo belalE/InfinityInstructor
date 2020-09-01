@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct UnitRow: View {
-    var units: [Unit]
+    @Binding var units: [Unit]
     var body: some View {
         VStack(alignment: .leading) {
                 Text(verbatim: "Units")
                     .font(.headline)
                 ScrollView(.horizontal){
                     HStack(alignment: .top) {
-                        ForEach(units, id: \.id) { unit in
-                            UnitItem(unit: unit)
+                        ForEach(units.indices) { idx in
+                            UnitItem(unit: self.$units[idx])
                                 .frame(width: 250)
                                 .padding(.trailing,10)
                                 .padding(.leading,10)
@@ -33,6 +33,6 @@ struct UnitRow: View {
 
 struct UnitRow_Previews: PreviewProvider {
     static var previews: some View {
-        return UnitRow(units: [Constants.unit1, Constants.unit2])
+        return UnitRow(units: .constant([Constants.unit1, Constants.unit2]))
     }
 }

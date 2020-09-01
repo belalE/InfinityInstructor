@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct UnitView: View {
-    var unit: Unit
+    @Binding var unit: Unit
     @State var pushed: Bool = false
     
     var body: some View {
@@ -17,7 +17,8 @@ struct UnitView: View {
             VStack(alignment: .center) {
                 Text("\(unit.name)")
                     .font(.largeTitle)
-                StudyRow(sets: unit.sets,units: [unit])
+                StudyRow(sets: $unit.sets,units: .constant([unit]))
+                //need to fix
                 TestList(tests: unit.tests)
                 
             }
@@ -27,7 +28,7 @@ struct UnitView: View {
 
 struct UnitView_Previews: PreviewProvider {
     static var previews: some View {
-        return UnitView(unit: Constants.unit1)
+        return UnitView(unit: .constant(Constants.unit1))
         
     }
 }

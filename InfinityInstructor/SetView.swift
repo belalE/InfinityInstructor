@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SetView: View {
-    var set : StudySet
+    @Binding var set : StudySet
     
     var body: some View {
         ScrollView {
@@ -18,7 +18,7 @@ struct SetView: View {
                     .font(.largeTitle)
                 Text("Last Studied: \(set.date.toString(dateFormat: "MM/dd/YYYY"))")
                 Text("Score: \(String(set.score))")
-                NavigationLink(destination: StudyView(set: set, index: 0, isReview: false)) {
+                NavigationLink(destination: StudyView(set: $set, index: 0, isReview: false)) {
                     Text("Study")
                         .foregroundColor(.white)
                         .background(
@@ -27,7 +27,7 @@ struct SetView: View {
                                 .frame(width: 300, height: 40, alignment: .center)
                     )
                 }
-                NavigationLink(destination: StudyView(set: set, index: 0, isReview: true)) {
+                NavigationLink(destination: StudyView(set: $set, index: 0, isReview: true)) {
                     Text("Review")
                         .foregroundColor(.white)
                         .background(
@@ -44,6 +44,6 @@ struct SetView: View {
 
 struct SetView_Previews: PreviewProvider {
     static var previews: some View {
-        SetView(set: Constants.set1)
+        SetView(set: .constant(Constants.set1))
     }
 }

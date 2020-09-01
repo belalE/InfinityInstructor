@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
 //        UserDefaults.standard.set(nil, forKey: "uid")
         if UserDefaults.standard.object(forKey: "uid") == nil {
-            var contentView = LoginView()
+            let contentView = LoginView()
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView: contentView)

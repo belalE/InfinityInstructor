@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct ClassRow: View {
-    var classes : [Class]
+    @Binding var classes : [Class]
     var body: some View {
         VStack(alignment: .leading) {
                 Text(verbatim: "Classes")
                     .font(.headline)
                 ScrollView(.horizontal){
                     HStack(alignment: .top) {
-                        ForEach(classes, id: \.id) { studyClass in
-                            ClassItem(studyClass: studyClass)
+                        ForEach(classes.indices) { idx in
+                            ClassItem(studyClass: self.$classes[idx])
                                 .frame(width: 250)
                                 .padding(.trailing,10)
                                 .padding(.leading,10)
@@ -32,6 +32,6 @@ struct ClassRow: View {
 
 struct ClassRow_Previews: PreviewProvider {
     static var previews: some View {
-        return ClassRow(classes: [Constants.studyClass1,Constants.studyClass2])
+        return ClassRow(classes: .constant([Constants.studyClass1,Constants.studyClass2]))
     }
 }

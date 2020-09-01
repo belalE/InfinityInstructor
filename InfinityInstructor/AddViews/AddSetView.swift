@@ -52,7 +52,7 @@ struct AddSetView: View {
                         
                     }
                     Button(action: {
-                        self.classes[self.selectedClassIndex!].units.append(Unit(id: 0, name: self.name, description: self.description, tests: [], sets: []))
+                        self.classes[self.selectedClassIndex!].units[self.selectedUnitIndex!].sets.append(StudySet(id: 0, name: self.name, description: self.description, score: 0, date: Date(timeIntervalSinceNow: 0), array: self.array))
                         NotificationCenter.default.post(name: NSNotification.Name("UpdateFirebase"), object: nil)
                     }) {
                         Text(verbatim: "Save")

@@ -24,7 +24,7 @@ struct ContentView: View {
                 VStack {
                     Spacer()
                     if self.viewRouter.currentView == "home" {
-                        HomeView(classes: self.user.classes)
+                        HomeView(classes: self.$user.classes)
                     } else if self.viewRouter.currentView == "settings" {
                         SettingsView()
                     }

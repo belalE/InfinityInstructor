@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct UnitItem: View {
-    var unit : Unit
+    @Binding var unit : Unit
     var body: some View {
-        NavigationLink(destination: UnitView(unit: self.unit)) {
+        NavigationLink(destination: UnitView(unit: self.$unit)) {
             VStack(alignment: .leading) {
                 HStack {
                     Text("\(unit.name)")
@@ -40,6 +40,6 @@ struct UnitItem: View {
 
 struct UnitItem_Previews: PreviewProvider {
     static var previews: some View {
-        return UnitItem(unit: Constants.unit1)
+        return UnitItem(unit: .constant(Constants.unit1))
     }
 }

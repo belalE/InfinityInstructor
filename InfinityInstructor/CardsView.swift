@@ -13,25 +13,26 @@ struct CardsView: View {
     var cards : [Card]
     
     var body: some View {
-        VStack(spacing: 20) {
-            ForEach(cards, id: \.id) { card in
-                VStack<AnyView> {
-                    if card.cardType == .regular {
-                        
-                        return AnyView(RegularReviewView(card: card as! RegularCard))
-                    } else if card.cardType == .multipleChoice {
-                        return AnyView(MCReviewView(card: card as! MultipleChoiceCard))
-                    } else if card.cardType == .bulleted {
-                        return AnyView(BulletedReviewView(card: card as! BulletedCard))
-                    } else if card.cardType == .numbered {
-                        return AnyView(NumberedReviewView(card: card as! NumberedCard))
-                    } else if card.cardType == .acronym {
-                        return AnyView(AcronymReviewView(card: card as! AcronymCard))
-                    }
-                    return AnyView(ImageReviewView(card: card as! ImageCard))
-                }
-            }
-        }
+        Text("pp")
+//        VStack(spacing: 20) {
+//            ForEach(cards, id: \.id) { card in
+//                VStack<AnyView> {
+//                    if card.cardType == .regular {
+//
+//                        return AnyView(RegularReviewView(card: card as! RegularCard))
+//                    } else if card.cardType == .multipleChoice {
+//                        return AnyView(MCReviewView(card: card as! MultipleChoiceCard))
+//                    } else if card.cardType == .bulleted {
+//                        return AnyView(BulletedReviewView(card: card as! BulletedCard))
+//                    } else if card.cardType == .numbered {
+//                        return AnyView(NumberedReviewView(card: card as! NumberedCard))
+//                    } else if card.cardType == .acronym {
+//                        return AnyView(AcronymReviewView(card: card as! AcronymCard))
+//                    }
+//                    return AnyView(ImageReviewView(card: card as! ImageCard))
+//                }
+//            }
+//        }
         .padding()
     }
 }

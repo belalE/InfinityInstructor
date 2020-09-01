@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct StudyItem: View {
-    var set : StudySet
-    var units : [Unit]
+    @Binding var set : StudySet
+    @Binding var units : [Unit]
     
     var body: some View {
-        NavigationLink(destination: SetView(set: set)) {
+        NavigationLink(destination: SetView(set: $set)) {
             VStack(alignment: .leading) {
                     HStack {
                         Text(set.name)
@@ -44,6 +44,6 @@ struct StudyItem: View {
 
 struct StudyItem_Previews: PreviewProvider {
     static var previews: some View {
-        return StudyItem(set: Constants.set1, units: [Constants.unit1, Constants.unit2])
+        return StudyItem(set: .constant(Constants.set1), units: .constant([Constants.unit1, Constants.unit2]))
     }
 }

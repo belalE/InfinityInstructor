@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct ClassItem: View {
-    var studyClass : Class
+    @Binding var studyClass : Class
     
     var body: some View {
-        NavigationLink(destination: ClassView(studyClass: studyClass)) {
+        NavigationLink(destination: ClassView(studyClass: $studyClass)) {
             VStack(alignment: .leading) {
                 HStack {
                     Text("\(studyClass.name)")
@@ -41,6 +41,6 @@ struct ClassItem: View {
 
 struct ClassItem_Previews: PreviewProvider {
     static var previews: some View {
-        return ClassItem(studyClass: Constants.studyClass1)
+        return ClassItem(studyClass: .constant(Constants.studyClass1))
     }
 }

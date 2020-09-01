@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct StudyRow: View {
-    var sets : [StudySet]
-    var units : [Unit]
+    @Binding var sets : [StudySet]
+    @Binding var units : [Unit]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,8 +18,8 @@ struct StudyRow: View {
                 .font(.headline)
             ScrollView(.horizontal){
                 HStack(alignment: .top) {
-                    ForEach(sets, id: \.id) { set in //fix order
-                        StudyItem(set: set, units: self.units)
+                    ForEach(sets.indices) { idx in //fix order
+                        StudyItem(set: self.$sets[idx], units: self.$units)
                             .frame(width: 250)
                             .padding(.trailing,10)
                             .padding(.leading,10)
@@ -34,6 +34,6 @@ struct StudyRow: View {
 
 struct StudyRow_Previews: PreviewProvider {
     static var previews: some View {
-        return StudyRow(sets: [Constants.set1,Constants.set2, Constants.set3, Constants.set4, Constants.set5, Constants.set6], units: [Constants.unit1, Constants.unit2])
+        return StudyRow(sets: .constant([Constants.set1,Constants.set2, Constants.set3, Constants.set4, Constants.set5, Constants.set6]), units: .constant([Constants.unit1, Constants.unit2]))
     }
 }

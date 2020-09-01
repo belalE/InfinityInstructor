@@ -9,11 +9,11 @@
 import UIKit
 import SwiftUI
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
+//        UserDefaults.standard.set(nil, forKey: "uid")
         if UserDefaults.standard.object(forKey: "uid") == nil {
             var contentView = LoginView()
             if let windowScene = scene as? UIWindowScene {
@@ -30,23 +31,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 window.makeKeyAndVisible()
             }
         } else {
-            var contentView = ContentView(classes: [Constants.studyClass1, Constants.studyClass2])
-             if let windowScene = scene as? UIWindowScene {
-                 let window = UIWindow(windowScene: windowScene)
-                 window.rootViewController =  UIHostingController(rootView: contentView)
-                 self.window = window
-                 window.makeKeyAndVisible()
+            //pull information from cloud
+            var user : User?
+            let db = Firestore.firestore()
+            let docRef = db.collection("users").document(UserDefaults.standard.value(forKey: "uid") as! String)
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    do {
+                        let user = try document.data(as: User.self)
+                        print("user: \(user)")
+                        if user != nil {
+                            user?.classes = user?.classes as! [Class]
+                        } else {
+                            print("user is nil")
+                            user?.classes = []
+                        }
+                        var contentView = ContentView(user: user!)
+                         if let windowScene = scene as? UIWindowScene {
+                             let window = UIWindow(windowScene: windowScene)
+                             window.rootViewController =  UIHostingController(rootView: contentView)
+                             self.window = window
+                             window.makeKeyAndVisible()
+                        }
+                    } catch {
+                        print("error : \(error)")
+                        print("errorDes : \(error.localizedDescription)")
+                    }
+                } else {
+                    print("Document does not exist")
+                }
             }
         }
-        let contentView = ContentView(classes: [Constants.studyClass1, Constants.studyClass2])
-
-        // Use a UIHostingController as window root view controller.
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
-            self.window = window
-            window.makeKeyAndVisible()
-        }
+//        let contentView = ContentView(classes: [Constants.studyClass1, Constants.studyClass2])
+//
+//        // Use a UIHostingController as window root view controller.
+//        if let windowScene = scene as? UIWindowScene {
+//            let window = UIWindow(windowScene: windowScene)
+//            window.rootViewController = UIHostingController(rootView: contentView)
+//            self.window = window
+//            window.makeKeyAndVisible()
+//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

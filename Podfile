@@ -9,6 +9,8 @@ target 'InfinityInstructor' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Firestore'
 	pod 'Firebase/Auth'
+	pod ‘FirebaseFirestoreSwift’
+
 
 
   target 'InfinityInstructorTests' do

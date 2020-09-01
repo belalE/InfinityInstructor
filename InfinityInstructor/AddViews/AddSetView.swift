@@ -11,7 +11,7 @@ import SwiftUI
 struct AddSetView: View {
     @State var name : String
     @State var description : String
-    @State var classes : [Class]
+    @Binding var classes : [Class]
     @State private var selectedClassIndex : Int? = 0
     @State private var selectedUnitIndex : Int?  = 0
     @State var array : [Card]
@@ -53,6 +53,7 @@ struct AddSetView: View {
                     }
                     Button(action: {
                         self.classes[self.selectedClassIndex!].units.append(Unit(id: 0, name: self.name, description: self.description, tests: [], sets: []))
+                        NotificationCenter.default.post(name: NSNotification.Name("UpdateFirebase"), object: nil)
                     }) {
                         Text(verbatim: "Save")
                             .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue).frame(width: 50,height: 30))
@@ -69,6 +70,6 @@ struct AddSetView: View {
 
 struct AddSetView_Previews: PreviewProvider {
     static var previews: some View {
-        return AddSetView(name: "", description: "", classes: [Constants.studyClass2, Constants.studyClass1], array: [])
+        return AddSetView(name: "", description: "", classes: .constant([Constants.studyClass2, Constants.studyClass1]), array: [])
     }
 }

@@ -7,11 +7,16 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct ContentView: View {
-    @State var classes : [Class]
+    @State var user : User
     @State var showPopUp = false
     @ObservedObject var viewRouter = ViewRouter()
+    
+    let pub = NotificationCenter.default
+    .publisher(for: NSNotification.Name("UpdateFirebase"))
     
     var body: some View {
         GeometryReader { geometry in
@@ -19,14 +24,14 @@ struct ContentView: View {
                 VStack {
                     Spacer()
                     if self.viewRouter.currentView == "home" {
-                        HomeView(classes: self.classes)
+                        HomeView(classes: self.user.classes)
                     } else if self.viewRouter.currentView == "settings" {
                         SettingsView()
                     }
                     Spacer()
                     ZStack {
                         if self.showPopUp {
-                            PlusMenu(classes: self.$classes)
+                            PlusMenu(classes: self.$user.classes)
                                 .offset(y: -geometry.size.height/4)
                         }
                         HStack {
@@ -75,6 +80,23 @@ struct ContentView: View {
             }
             
         }
+        .onReceive(pub) { (output) in
+            self.updateFirebase()
+        }
+    }
+    
+    func updateFirebase() {
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(UserDefaults.standard.value(forKey: "uid") as! String)
+        do {
+            let data = try JSONEncoder().encode(self.user.classes)
+            try docRef.setData(from: self.user) { (error) in
+                print(error?.localizedDescription)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
     }
     
     func addClass() {
@@ -95,7 +117,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        return ContentView(classes: [Constants.studyClass1, Constants.studyClass2])
+        return ContentView(user: User(name: "Belal", classes: [Constants.studyClass1, Constants.studyClass2]))
     }
 }
 
@@ -108,7 +130,7 @@ struct PlusMenu: View {
                     RoundedRectangle(cornerRadius: 5)
                         .foregroundColor(Color.blue)
                         .frame(width: 70, height: 70)
-                    NavigationLink(destination: AddClassView(name: "", description: "", classes: self.classes)) {
+                    NavigationLink(destination: AddClassView(name: "", description: "", classes: self.$classes)) {
                         Text("Class")
                             .padding(10)
                             .foregroundColor(.white)
@@ -119,7 +141,7 @@ struct PlusMenu: View {
                     RoundedRectangle(cornerRadius: 5)
                         .foregroundColor(Color.blue)
                         .frame(width: 70, height: 70)
-                    NavigationLink(destination: AddUnitView(name: "", description: "", classes: self.classes)) {
+                    NavigationLink(destination: AddUnitView(name: "", description: "", classes: self.$classes)) {
                         Text("Unit")
                             .padding(10)
                             .foregroundColor(.white)
@@ -134,7 +156,7 @@ struct PlusMenu: View {
                     RoundedRectangle(cornerRadius: 5)
                         .foregroundColor(Color.blue)
                         .frame(width: 70, height: 70)
-                    NavigationLink(destination: AddSetView(name: "", description: "", classes: self.classes, array: [])) {
+                    NavigationLink(destination: AddSetView(name: "", description: "", classes: self.$classes, array: [])) {
                         Text("Set")
                             .padding(10)
                             .foregroundColor(.white)
@@ -145,7 +167,7 @@ struct PlusMenu: View {
                     RoundedRectangle(cornerRadius: 5)
                         .foregroundColor(Color.blue)
                         .frame(width: 70, height: 70)
-                    NavigationLink(destination: AddTestView(name: "", description: "", classes: self.classes)) {
+                    NavigationLink(destination: AddTestView(name: "", description: "", classes: self.$classes)) {
                         Text("Test")
                             .padding(10)
                             .foregroundColor(.white)

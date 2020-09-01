@@ -11,7 +11,7 @@ import SwiftUI
 struct AddTestView: View {
     @State var name : String
     @State var description : String
-    @State var classes : [Class]
+    @Binding var classes : [Class]
     @State private var selectedClassIndex : Int? = 0
     @State private var selectedUnitIndex : Int?  = 0
     @State private var selectedValueIndex : Int?
@@ -44,6 +44,7 @@ struct AddTestView: View {
                 ].sets))
                 Button(action: {
                     self.classes[self.selectedClassIndex!].units[self.selectedUnitIndex!].tests.append(Test(id: 0, name: self.name, description: self.description, value: self.selectedValueIndex!, date: self.date!, sets: []))
+                    NotificationCenter.default.post(name: NSNotification.Name("UpdateFirebase"), object: nil)
                 }) {
                     Text(verbatim: "Save")
                         .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue).frame(width: 50,height: 30))
@@ -58,6 +59,6 @@ struct AddTestView: View {
 
 struct AddTestView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTestView(name: "", description: "", classes: [Constants.studyClass1, Constants.studyClass2])
+        AddTestView(name: "", description: "", classes: .constant([Constants.studyClass1, Constants.studyClass2]))
     }
 }

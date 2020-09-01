@@ -11,7 +11,8 @@ import SwiftUI
 struct AddClassView: View {
     @State var name : String
     @State var description : String
-    @State var classes: [Class]
+    @Binding var classes: [Class]
+    
 
     var body: some View {
         VStack {
@@ -25,6 +26,7 @@ struct AddClassView: View {
             Spacer()
             Button(action: {
                 self.classes.append(Class(id: 0, name: self.name, description: self.description, units: []))
+                NotificationCenter.default.post(name: NSNotification.Name("UpdateFirebase"), object: nil)
             }) {
                 Text(verbatim: "Save")
                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue).frame(width: 50,height: 30))
@@ -38,6 +40,6 @@ struct AddClassView: View {
 
 struct AddClassView_Previews: PreviewProvider {
     static var previews: some View {
-        return AddClassView(name: "", description: "", classes: [Constants.studyClass1,Constants.studyClass2])
+        return AddClassView(name: "", description: "", classes: .constant([Constants.studyClass1,Constants.studyClass2]))
     }
 }

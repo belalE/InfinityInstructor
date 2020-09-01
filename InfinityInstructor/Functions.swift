@@ -69,6 +69,17 @@ func getTests(classes: [Class]) -> [Test] {
 
 
 func getEarliestDate(studyClass: Class) -> String {
+    if studyClass.units.count == 0 {
+        return "N/A"
+    }
+    print(studyClass.units[0].name)
+    var setCount = 0
+    for unit in studyClass.units {
+        setCount += unit.sets.count
+    }
+    if setCount == 0 {
+        return "N/A"
+    }
     var date : Date = studyClass.units[0].sets[0].date
     for unit in studyClass.units {
         for set in unit.sets {
@@ -81,6 +92,9 @@ func getEarliestDate(studyClass: Class) -> String {
 }
 
 func getEarliestDateFromUnit(unit: Unit) -> String {
+    if unit.sets.count == 0 {
+        return "N/A"
+    }
     var date : Date = unit.sets[0].date
     for set in unit.sets {
         if set.date < date {
@@ -91,6 +105,16 @@ func getEarliestDateFromUnit(unit: Unit) -> String {
 }
 
 func getEarliestTestDate(studyClass: Class) -> String {
+    if studyClass.units.count == 0 {
+        return "N/A"
+    }
+    var testCount = 0
+    for unit in studyClass.units {
+        testCount += unit.tests.count
+    }
+    if testCount == 0 {
+        return "N/A"
+    }
     let tests = getTests(classes: [studyClass])
     var finalTest = tests[0]
     for test in tests {
@@ -102,6 +126,9 @@ func getEarliestTestDate(studyClass: Class) -> String {
 }
 
 func getEarliestTestDateFromUnit(unit: Unit) -> String {
+    if unit.tests.count == 0 {
+        return "N/A"
+    }
     let tests = unit.tests
     var finalTest = tests[0]
     for test in tests {
@@ -122,14 +149,6 @@ func setImage(set: StudySet) -> String {
     }
     return "lock.circle.fill"
 }
-
-func setTypeName(type: SetType) -> String {
-    if type == .factSet {
-        return "Facts"
-    }
-    return "Questions"
-}
-
 func shuffleOptions(card: MultipleChoiceCard) -> [String] {
     var array = [String]()
     array.append(card.correct)

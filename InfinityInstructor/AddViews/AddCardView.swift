@@ -9,52 +9,49 @@
 import SwiftUI
 
 struct AddCardView: View {
-    @State var cardType : CardType
     @Binding var array : [Card]
-    
+    @State var cardType : CardType
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15).padding().foregroundColor(.blue)
-            VStack<AnyView> {
-                if self.cardType == .regular {
-                    
+            VStack(spacing: 25) {
+                CardTypeView(cardType: self.$cardType)
+                VStack<AnyView> {
+                    if self.cardType == .regular {
+                        
+                        return AnyView(VStack(spacing: 20) {
+                            AddRegularCardView(front: "", back: "", array: self.$array)
+                        })
+                    } else if self.cardType == .multipleChoice {
+                        return AnyView(VStack(spacing: 20) {
+                            AddMCCardView(front: "", correct: "", incorrect1: "", incorrect2: "", incorrect3: "", array: self.$array)
+                        })
+                    } else if self.cardType == .bulleted {
+                        return AnyView(VStack(spacing: 20) {
+                            AddBulletedCardView(front: "", bullets: [], array: self.$array)
+                        })
+                    } else if self.cardType == .numbered {
+                        return AnyView(VStack(spacing: 20) {
+                            AddNumberedCardView(front: "", list: [], array: self.$array)
+                        })
+                    } else if self.cardType == .acronym {
+                        return AnyView(VStack(spacing: 20) {
+                            AddAcronymCardView(front: "", meaning: [], array: self.$array)
+                        })
+                    }
                     return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddRegularCardView(front: "", back: "", array: self.$array)
-                    })
-                } else if cardType == .multipleChoice {
-                    return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddMCCardView(front: "", correct: "", incorrect1: "", incorrect2: "", incorrect3: "", array: self.$array)
-                    })
-                } else if cardType == .bulleted {
-                    return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddBulletedCardView(front: "", bullets: [], array: self.$array)
-                    })
-                } else if cardType == .numbered {
-                    return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddNumberedCardView(front: "", list: [], array: self.$array)
-                    })
-                } else if cardType == .acronym {
-                    return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddAcronymCardView(front: "", meaning: [], array: self.$array)
+                        AddImageCardView(front: "", array: self.$array)
                     })
                 }
-                return AnyView(VStack(spacing: 20) {
-                    CardTypeView(cardType: self.$cardType)
-                    AddImageCardView(front: "", array: self.$array)
-                })
             }
+            
         }
     }
 }
 
 struct AddCardView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCardView(cardType: .regular, array: .constant([]))
+        AddCardView(array: .constant([]), cardType: .regular)
     }
 }
 
@@ -298,56 +295,3 @@ struct AddImageCardView: View {
         //        } // ADD Camera
     }
 }
-
-
-struct CardTypeView: View {
-    @Binding var cardType : CardType
-    var body: some View {
-        AnyView(HStack(spacing: 30) {
-            Button(action: {
-                self.cardType = .regular
-            }) {
-                Image(systemName: "doc.plaintext")
-                    .foregroundColor(.black)
-                    .background(RoundedRectangle(cornerRadius: 5).frame(width: 30, height: 30).foregroundColor((self.cardType == .regular) ? .gray : .white))
-            }
-            Button(action: {
-                self.cardType = .multipleChoice
-            }) {
-                Image(systemName: "questionmark.square")
-                    .foregroundColor(.black)
-                    .background(RoundedRectangle(cornerRadius: 5).frame(width: 30, height: 30).foregroundColor((self.cardType == .multipleChoice) ? .gray : .white))
-            }
-            Button(action: {
-                self.cardType = .numbered
-            }) {
-                Image(systemName: "list.number")
-                    .foregroundColor(.black)
-                    .background(RoundedRectangle(cornerRadius: 5).frame(width: 30, height: 30).foregroundColor((self.cardType == .numbered) ? .gray : .white))
-            }
-            Button(action: {
-                self.cardType = .bulleted
-            }) {
-                Image(systemName: "list.bullet")
-                    .foregroundColor(.black)
-                    .background(RoundedRectangle(cornerRadius: 5).frame(width: 30, height: 30).foregroundColor((self.cardType == .bulleted) ? .gray : .white))
-            }
-            Button(action: {
-                self.cardType = .acronym
-            }) {
-                Image(systemName: "textformat")
-                    .foregroundColor(.black)
-                    .background(RoundedRectangle(cornerRadius: 5).frame(width: 30, height: 30).foregroundColor((self.cardType == .acronym) ? .gray : .white))
-            }
-            Button(action: {
-                self.cardType = .image
-            }) {
-                Image(systemName: "camera")
-                    .foregroundColor(.black)
-                    .background(RoundedRectangle(cornerRadius: 5).frame(width: 30, height: 30).foregroundColor((self.cardType == .image) ? .gray : .white))
-            }
-        })
-            .background(RoundedRectangle(cornerRadius: 10).frame(width: 320, height: 40).foregroundColor(.white))
-    }
-}
-

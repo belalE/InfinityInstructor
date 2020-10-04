@@ -83,6 +83,10 @@ struct ContentView: View {
         .onReceive(pub) { (output) in
             self.updateFirebase()
         }
+        .onAppear {
+            print(self.user.name)
+            print()
+        }
     }
     
     func updateFirebase() {
@@ -98,21 +102,6 @@ struct ContentView: View {
         }
         
     }
-    
-    func addClass() {
-        print("class")
-    }
-    
-    func addUnit() {
-        print("unit")
-    }
-    func addSet() {
-        print("set")
-    }
-    func addTest() {
-        print("test")
-    }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -156,7 +145,7 @@ struct PlusMenu: View {
                     RoundedRectangle(cornerRadius: 5)
                         .foregroundColor(Color.blue)
                         .frame(width: 70, height: 70)
-                    NavigationLink(destination: AddSetView(name: "", description: "", classes: self.$classes, array: [])) {
+                    NavigationLink(destination: AddSetView(name: "", description: "", classes: self.$classes, array: [], cardTypeArray: [])) {
                         Text("Set")
                             .padding(10)
                             .foregroundColor(.white)

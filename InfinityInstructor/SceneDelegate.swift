@@ -22,55 +22,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
 //        UserDefaults.standard.set(nil, forKey: "uid")
-        if UserDefaults.standard.object(forKey: "uid") == nil {
-            let contentView = LoginView()
+        print("open")
+        let user : User? = getScene()
+        if user == nil {
             if let windowScene = scene as? UIWindowScene {
+                print("user is nil")
                 let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: contentView)
+                window.rootViewController = UIHostingController(rootView: LoginView())
                 self.window = window
                 window.makeKeyAndVisible()
             }
         } else {
-            //pull information from cloud
-            var user : User?
-            let db = Firestore.firestore()
-            let docRef = db.collection("users").document(UserDefaults.standard.value(forKey: "uid") as! String)
-            docRef.getDocument { (document, error) in
-                if let document = document, document.exists {
-                    do {
-                        let user = try document.data(as: User.self)
-                        print("user: \(user)")
-                        if user != nil {
-                            user?.classes = user?.classes as! [Class]
-                        } else {
-                            print("user is nil")
-                            user?.classes = []
-                        }
-                        var contentView = ContentView(user: user!)
-                         if let windowScene = scene as? UIWindowScene {
-                             let window = UIWindow(windowScene: windowScene)
-                             window.rootViewController =  UIHostingController(rootView: contentView)
-                             self.window = window
-                             window.makeKeyAndVisible()
-                        }
-                    } catch {
-                        print("error : \(error)")
-                        print("errorDes : \(error.localizedDescription)")
-                    }
-                } else {
-                    print("Document does not exist")
-                }
+            
+            if let windowScene = scene as? UIWindowScene {
+                print("user isn't nil")
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = UIHostingController(rootView: ContentView(user: user!))
+                self.window = window
+                window.makeKeyAndVisible()
             }
         }
-//        let contentView = ContentView(classes: [Constants.studyClass1, Constants.studyClass2])
-//
-//        // Use a UIHostingController as window root view controller.
-//        if let windowScene = scene as? UIWindowScene {
-//            let window = UIWindow(windowScene: windowScene)
-//            window.rootViewController = UIHostingController(rootView: contentView)
-//            self.window = window
-//            window.makeKeyAndVisible()
-//        }
+
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -104,3 +77,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+struct SceneDelegate_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}

@@ -55,6 +55,7 @@
 		8B87F1ED24E1DF30008B5DE9 /* RegularCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87F1EC24E1DF30008B5DE9 /* RegularCardView.swift */; };
 		8B87F1EF24E1DF3F008B5DE9 /* BulletedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87F1EE24E1DF3F008B5DE9 /* BulletedCardView.swift */; };
 		8B87F1F124E1DF5D008B5DE9 /* NumberedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87F1F024E1DF5D008B5DE9 /* NumberedCardView.swift */; };
+		8BAB82CC2501FF1100551F44 /* CardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAB82CB2501FF1100551F44 /* CardTypeView.swift */; };
 		8BC5226524F5E0630042A1FF /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5226424F5E0630042A1FF /* PickerField.swift */; };
 		8BC5226724F5E07F0042A1FF /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5226624F5E07F0042A1FF /* PickerTextField.swift */; };
 		8BC5226924F5EA110042A1FF /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5226824F5EA110042A1FF /* DateTextField.swift */; };
@@ -142,6 +143,7 @@
 		8B87F1EC24E1DF30008B5DE9 /* RegularCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularCardView.swift; sourceTree = "<group>"; };
 		8B87F1EE24E1DF3F008B5DE9 /* BulletedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletedCardView.swift; sourceTree = "<group>"; };
 		8B87F1F024E1DF5D008B5DE9 /* NumberedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberedCardView.swift; sourceTree = "<group>"; };
+		8BAB82CB2501FF1100551F44 /* CardTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeView.swift; sourceTree = "<group>"; };
 		8BC5226424F5E0630042A1FF /* PickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 		8BC5226624F5E07F0042A1FF /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		8BC5226824F5EA110042A1FF /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				8B5DA4D624E483B700EBFABF /* AddSetView.swift */,
 				8B5DA4DC24E4A26200EBFABF /* AddCardView.swift */,
 				8B5DA4D824E483C000EBFABF /* AddTestView.swift */,
+				8BAB82CB2501FF1100551F44 /* CardTypeView.swift */,
 			);
 			path = AddViews;
 			sourceTree = "<group>";
@@ -425,7 +428,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Belal Elsiesy";
 				TargetAttributes = {
 					8B3F3DEC2494560C005A3213 = {
@@ -633,6 +636,7 @@
 				8B87F1EF24E1DF3F008B5DE9 /* BulletedCardView.swift in Sources */,
 				8B3F3DF32494560C005A3213 /* SceneDelegate.swift in Sources */,
 				8B3F3DF52494560C005A3213 /* ContentView.swift in Sources */,
+				8BAB82CC2501FF1100551F44 /* CardTypeView.swift in Sources */,
 				8B3F3E26249457CA005A3213 /* Test.swift in Sources */,
 				8BECED6C2497196A00500AB9 /* SetView.swift in Sources */,
 				8BECED6E24972C8800500AB9 /* StudyView.swift in Sources */,
@@ -718,6 +722,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -778,6 +783,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -816,6 +822,7 @@
 				DEVELOPMENT_TEAM = 93PCCJ5ZR5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InfinityInstructor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -837,6 +844,7 @@
 				DEVELOPMENT_TEAM = 93PCCJ5ZR5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = InfinityInstructor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

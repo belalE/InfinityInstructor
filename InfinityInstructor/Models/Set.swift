@@ -23,6 +23,7 @@ class StudySet : Codable {
         self.score = score
         self.date = date
         self.array = array
+        
     }
     
     enum CodingKeys : String, CodingKey {
@@ -50,6 +51,7 @@ class StudySet : Codable {
         score = try values.decode(Int.self, forKey: .score)
         date = try values.decode(Date.self, forKey: .date)
         array = try values.decode([Card].self, forKey: .array)
+       
 
     }
 }

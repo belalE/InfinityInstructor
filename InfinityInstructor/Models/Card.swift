@@ -30,6 +30,7 @@ class Card : Codable{
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        print("encoding super")
         try container.encode(id, forKey: .id)
         try container.encode(front, forKey: .front)
         try container.encode(score, forKey: .score)
@@ -37,11 +38,11 @@ class Card : Codable{
     }
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        print("decoding super")
         self.id = try values.decode(Int.self, forKey: .id)
         self.front = try values.decode(String.self, forKey: .front)
         self.score = try values.decode(Int.self, forKey: .score)
         self.cardType = CardType(rawValue: try values.decode(String.self, forKey: .cardType))!
-
     }
 }
 
@@ -62,19 +63,24 @@ class RegularCard : Card {
         self.back = back
         super.init(id: id, front: front, score: score, cardType: .regular)
     }
-    enum CodingKeys : String, CodingKey {
+    enum CodingKeys2 : String, CodingKey {
         case back
+        case id
+        case front
+        case score
+        case cardType
     }
     override func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: CodingKeys2.self)
+        print("encoding Regular")
         try super.encode(to: encoder)
         try container.encode(back, forKey: .back)
     }
     required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys2.self)
+        print("decoding regular")
         back = try values.decode(String.self, forKey: .back)
-        let superDecoder = try values.superDecoder()
-        try super.init(from: superDecoder)
+        try super.init(from: decoder)
 
     }
 }
@@ -91,22 +97,21 @@ class MultipleChoiceCard : Card {
         
     }
     
-    enum CodingKeys : String, CodingKey {
+    enum CodingKeys3 : String, CodingKey {
         case correct
         case incorrectOptions
     }
     override func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: CodingKeys3.self)
         try super.encode(to: encoder)
         try container.encode(correct, forKey: .correct)
         try container.encode(incorrectOptions, forKey: .incorrectOptions)
     }
     required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys3.self)
         correct = try values.decode(String.self, forKey: .correct)
         incorrectOptions = try values.decode([String].self, forKey: .incorrectOptions)
-        let superDecoder = try values.superDecoder()
-        try super.init(from: superDecoder)
+        try super.init(from: decoder)
 
     }
 }
@@ -120,19 +125,18 @@ class BulletedCard : Card {
         
     }
     
-    enum CodingKeys : String, CodingKey {
+    enum CodingKeys4 : String, CodingKey {
         case bullets
     }
     override func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: CodingKeys4.self)
         try super.encode(to: encoder)
         try container.encode(bullets, forKey: .bullets)
     }
     required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys4.self)
         bullets = try values.decode([String].self, forKey: .bullets)
-        let superDecoder = try values.superDecoder()
-        try super.init(from: superDecoder)
+        try super.init(from: decoder)
 
     }
 }
@@ -146,19 +150,18 @@ class NumberedCard : Card {
         
     }
     
-    enum CodingKeys : String, CodingKey {
+    enum CodingKeys5 : String, CodingKey {
         case list
     }
     override func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: CodingKeys5.self)
         try super.encode(to: encoder)
         try container.encode(list, forKey: .list)
     }
     required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys5.self)
         list = try values.decode([String].self, forKey: .list)
-        let superDecoder = try values.superDecoder()
-        try super.init(from: superDecoder)
+        try super.init(from: decoder)
 
     }
 }
@@ -171,19 +174,18 @@ class AcronymCard : Card {
         
     }
     
-    enum CodingKeys : String, CodingKey {
+    enum CodingKeys6 : String, CodingKey {
         case meaning
     }
     override func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: CodingKeys6.self)
         try super.encode(to: encoder)
         try container.encode(meaning, forKey: .meaning)
     }
     required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys6.self)
         meaning = try values.decode([String].self, forKey: .meaning)
-        let superDecoder = try values.superDecoder()
-        try super.init(from: superDecoder)
+        try super.init(from: decoder)
 
     }
 }
@@ -197,20 +199,19 @@ class ImageCard : Card {
         
     }
     
-    enum CodingKeys : String, CodingKey {
+    enum CodingKeys7 : String, CodingKey {
         case image
     }
     override func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: CodingKeys7.self)
         try super.encode(to: encoder)
         try container.encode(image.pngData(), forKey: .image)
     }
     required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys7.self)
         let imageData = try values.decode(Data.self, forKey: .image)
         image = UIImage(data: imageData)!
-        let superDecoder = try values.superDecoder()
-        try super.init(from: superDecoder)
+        try super.init(from: decoder)
 
     }
     

@@ -36,7 +36,7 @@ struct SetView: View {
                                 .frame(width: 300, height: 40, alignment: .center)
                     )
                 }
-                CardsView(cards: self.set.array)
+                CardsView(cards:  self.set.array)
             }
         }
     }

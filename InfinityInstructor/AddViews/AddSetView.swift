@@ -15,6 +15,7 @@ struct AddSetView: View {
     @State private var selectedClassIndex : Int? = 0
     @State private var selectedUnitIndex : Int?  = 0
     @State var array : [Card]
+    @State var cardTypeArray : [CardType]
     
     func save() {
         //need to save subviews
@@ -40,11 +41,16 @@ struct AddSetView: View {
                     PickerField("Select A Unit", data: getNameArray(units: self.classes[self.selectedClassIndex!].units), selectionIndex: self.$selectedUnitIndex)
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray).frame(width: 350, height: 50, alignment: .leading))
+//                    ForEach(self.$cardTypeArray, id: \.self) { cardType in
+//                        AddCardView(array: self.$array, cardType: cardType)
+//                    }
                     ForEach(self.array, id: \.id) { i in
-                        AddCardView(cardType: .regular, array: self.$array)
-                    }
+                        AddCardView(array: self.$array, cardType: .regular)
+                                        }
                     Button(action: {
                         self.array.append(RegularCard(id: 0, front: "", score: 0, back: ""))
+                        self.cardTypeArray.append(.regular)
+                        print("add")
                     }) {
                         Text(verbatim: "Add")
                             .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue).frame(width: 50,height: 30))
@@ -70,6 +76,6 @@ struct AddSetView: View {
 
 struct AddSetView_Previews: PreviewProvider {
     static var previews: some View {
-        return AddSetView(name: "", description: "", classes: .constant([Constants.studyClass2, Constants.studyClass1]), array: [])
+        return AddSetView(name: "", description: "", classes: .constant([Constants.studyClass2, Constants.studyClass1]), array: [], cardTypeArray: [])
     }
 }

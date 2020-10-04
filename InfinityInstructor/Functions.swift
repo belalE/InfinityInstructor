@@ -8,6 +8,9 @@
 
 import Foundation
 import SwiftUI
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 func hasTest(set: StudySet, units: [Unit]) -> String {
 //    for unit in units {
@@ -72,7 +75,6 @@ func getEarliestDate(studyClass: Class) -> String {
     if studyClass.units.count == 0 {
         return "N/A"
     }
-    print(studyClass.units[0].name)
     var setCount = 0
     for unit in studyClass.units {
         setCount += unit.sets.count
@@ -333,6 +335,33 @@ func orderSets(studyClass: Class) -> [StudySet] {
     return arr
 }
 
+func orderSets(unit: Unit) -> [StudySet] {
+    var tested = [StudySet]()
+    for studySet in unit.sets {
+        if hasTest(set: studySet, units: [unit]) != "No Test" && stringToDate(str: hasTest(set: studySet, units: [unit])).compare(Date(timeIntervalSinceNow: 200000)) == .orderedAscending {
+            tested.append(studySet)
+        }
+    }
+    var gray = [StudySet]()
+    var red = [StudySet]()
+    var yellow = [StudySet]()
+    var green = [StudySet]()
+    
+    for studySet in tested {
+        if studySet.score == 0 {
+            gray.append(studySet)
+        } else if studySet.score == 1 {
+            red.append(studySet)
+        } else if studySet.score == 2 {
+            yellow.append(studySet)
+        } else if studySet.score == 3 {
+            green.append(studySet)
+        }
+    }
+    let arr = gray + red + yellow + green
+    return arr
+}
+
 func getNameArray(classes: [Class]) -> [String] {
     var arr = [String]()
     for studyClass in classes {
@@ -366,4 +395,35 @@ func getChecklistArray(sets: [StudySet]) -> [CheckListItem] {
         arr.append(CheckListItem(id: 0, set: set))
     }
     return arr
+}
+
+
+func getScene() -> User? {
+    if UserDefaults.standard.object(forKey: "uid") == nil {
+        return nil
+    } else {
+        //pull information from cloud
+        var user : User?
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(UserDefaults.standard.value(forKey: "uid") as! String)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                do {
+                    user = try document.data(as: User.self)
+                    if user != nil {
+                        user?.classes = user?.classes as! [Class]
+                    } else {
+                        print("user is nil")
+                        user?.classes = []
+                    }
+                } catch {
+                    print("error : \(error)")
+                    print("errorDes : \(error.localizedDescription)")
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+        return user
+    }
 }

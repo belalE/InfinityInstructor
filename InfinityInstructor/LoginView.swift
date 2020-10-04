@@ -46,6 +46,7 @@ struct LoginView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             Button(action: {
+                print("sign up/ log in")
                 if self.pickerIndex == 1 {
                     
                     //Create User
@@ -64,13 +65,13 @@ struct LoginView: View {
                             UserDefaults.standard.set(uid, forKey: "uid")
                         }
                         if user != nil && UserDefaults.standard.value(forKey: "uid") != nil {
-                            print("open modal")
-                            self.show_modal = true
                             //Setup Database
                             let db = Firestore.firestore()
                             let docRef = db.collection("users").document(UserDefaults.standard.value(forKey: "uid") as! String)
                             do {
-                                try docRef.setData(from: User(name: self.name, classes: []))
+                                try docRef.setData(from: User(name: self.name, classes: [Constants.studyClass1, Constants.studyClass2]))
+//                                SceneDelegate.set
+                                NotificationCenter.default.post(name: NSNotification.Name("setScene"), object: nil)
                             } catch {
                                 print(error.localizedDescription)
                             }
@@ -89,6 +90,7 @@ struct LoginView: View {
                         print(uid)
                         UserDefaults.standard.set(uid, forKey: "uid")
                     }
+                    NotificationCenter.default.post(name: NSNotification.Name("setScene"), object: nil)
                 }
             }) {
                 Text(self.pickerIndex == 1 ? "Sign Up" : "Login")

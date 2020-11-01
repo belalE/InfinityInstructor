@@ -22,23 +22,31 @@ class Card : Codable{
         self.cardType = cardType
     }
     
-    enum CodingKeys : String, CodingKey {
+    enum CodingKeys1 : String, CodingKey {
         case id
         case front
         case score
         case cardType
     }
     func encode(to encoder: Encoder) throws {
+<<<<<<< Updated upstream
         var container = encoder.container(keyedBy: CodingKeys.self)
         print("encoding super")
+=======
+        var container = encoder.container(keyedBy: CodingKeys1.self)
+>>>>>>> Stashed changes
         try container.encode(id, forKey: .id)
         try container.encode(front, forKey: .front)
         try container.encode(score, forKey: .score)
         try container.encode(cardType.rawValue, forKey: .cardType)
     }
     required init(from decoder: Decoder) throws {
+<<<<<<< Updated upstream
         let values = try decoder.container(keyedBy: CodingKeys.self)
         print("decoding super")
+=======
+        let values = try decoder.container(keyedBy: CodingKeys1.self)
+>>>>>>> Stashed changes
         self.id = try values.decode(Int.self, forKey: .id)
         self.front = try values.decode(String.self, forKey: .front)
         self.score = try values.decode(Int.self, forKey: .score)
@@ -72,13 +80,19 @@ class RegularCard : Card {
     }
     override func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys2.self)
+<<<<<<< Updated upstream
         print("encoding Regular")
+=======
+>>>>>>> Stashed changes
         try super.encode(to: encoder)
         try container.encode(back, forKey: .back)
     }
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys2.self)
+<<<<<<< Updated upstream
         print("decoding regular")
+=======
+>>>>>>> Stashed changes
         back = try values.decode(String.self, forKey: .back)
         try super.init(from: decoder)
 

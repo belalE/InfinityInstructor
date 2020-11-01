@@ -14,9 +14,7 @@ struct AddSetView: View {
     @Binding var classes : [Class]
     @State private var selectedClassIndex : Int? = 0
     @State private var selectedUnitIndex : Int?  = 0
-    @State var array : [Card]
-    @State var cardTypeArray : [CardType]
-    
+    @State var array : [Card]    
     func save() {
         //need to save subviews
         NotificationCenter.default.post(name: NSNotification.Name("Save"), object: nil)

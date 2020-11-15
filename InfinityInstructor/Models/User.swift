@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User : Codable  {
+class OnlineUser : Codable  {
     var name: String
     var classes: [Class]
     

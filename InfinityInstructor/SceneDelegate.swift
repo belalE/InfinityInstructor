@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-//        UserDefaults.standard.set(nil, forKey: "uid")
+        UserDefaults.standard.set(nil, forKey: "uid")
         if UserDefaults.standard.object(forKey: "uid") == nil {
             let contentView = LoginView()
             if let windowScene = scene as? UIWindowScene {
@@ -32,13 +32,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         } else {
             //pull information from cloud
-            var user : User?
+            var user : OnlineUser?
             let db = Firestore.firestore()
             let docRef = db.collection("users").document(UserDefaults.standard.value(forKey: "uid") as! String)
             docRef.getDocument { (document, error) in
                 if let document = document, document.exists {
                     do {
-                        let user = try document.data(as: User.self)
+                        let user = try document.data(as: OnlineUser.self)
                         print("user: \(user)")
                         if user != nil {
                             user?.classes = user?.classes as! [Class]

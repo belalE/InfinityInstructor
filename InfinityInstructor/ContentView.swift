@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct ContentView: View {
-    @State var user : User
+    @State var user : OnlineUser
     @State var showPopUp = false
     @ObservedObject var viewRouter = ViewRouter()
     
@@ -117,7 +117,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        return ContentView(user: User(name: "Belal", classes: [Constants.studyClass1, Constants.studyClass2]))
+        return ContentView(user: OnlineUser(name: "Belal", classes: [Constants.studyClass1, Constants.studyClass2]))
     }
 }
 

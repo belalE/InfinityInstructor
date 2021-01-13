@@ -144,8 +144,8 @@ struct PlusMenu: View {
                     NavigationLink(destination: AddUnitView(name: "", description: "", classes: self.$classes)) {
                         Text("Unit")
                             .padding(10)
-                            .foregroundColor(.white)
-                    }
+                            .foregroundColor(classes.isEmpty ? .gray : .white)
+                    }.disabled(classes.isEmpty)
                     
                 }
                 
@@ -159,8 +159,8 @@ struct PlusMenu: View {
                     NavigationLink(destination: AddSetView(name: "", description: "", classes: self.$classes, array: [])) {
                         Text("Set")
                             .padding(10)
-                            .foregroundColor(.white)
-                    }
+                            .foregroundColor(unitIsEmpty(classes: classes) ? .gray : .white)
+                    }.disabled(unitIsEmpty(classes: classes))
                     
                 }
                 ZStack {
@@ -170,8 +170,8 @@ struct PlusMenu: View {
                     NavigationLink(destination: AddTestView(name: "", description: "", classes: self.$classes)) {
                         Text("Test")
                             .padding(10)
-                            .foregroundColor(.white)
-                    }
+                            .foregroundColor(unitIsEmpty(classes: classes) ? .gray : .white)
+                    }.disabled(unitIsEmpty(classes: classes))
                     
                 }
             }
@@ -179,3 +179,26 @@ struct PlusMenu: View {
         }
     }
 }
+
+func unitIsEmpty(classes: [Class]) -> Bool {
+    if classes.isEmpty {
+        return true
+    }
+    var count = 0
+    for c in classes {
+        if !c.units.isEmpty {
+            count = count + 1
+        }
+    }
+    return (count == 0)
+}
+
+//func getClassArray(classes: [Class]) -> [Class] {
+//    var arr = [Class]()
+//    for c in classes {
+//        if !c.units.isEmpty {
+//            arr.append(c)
+//        }
+//    }
+//    return arr
+//}

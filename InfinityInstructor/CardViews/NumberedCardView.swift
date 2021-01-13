@@ -10,12 +10,13 @@ import SwiftUI
 
 struct NumberedCardView: View {
     @Binding var flipped : Bool
+    @Environment(\.colorScheme) var colorScheme
     var card : NumberedCard
     var body: some View {
         let flipDegrees = flipped ? 180.0 : 0
         return ZStack() {
                     VStack {
-                        Text(card.front).padding(.horizontal)
+                        Text(card.front).padding(.horizontal).foregroundColor(.black)
                         ForEach(0..<card.list.count) { i in
                             HStack {
                                 Text("\(i + 1): ")
@@ -23,7 +24,7 @@ struct NumberedCardView: View {
                             }
                         }
                     }
-                    .placedOnCard(Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
+                    .placedOnCard(colorScheme == .dark ? Color.gray : Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
                     VStack {
                         ForEach(0..<card.list.count, id: \.self) { i in
                             Text("\(i): \(self.card.list[i])").padding(.horizontal)

@@ -10,13 +10,14 @@ import SwiftUI
 
 struct BulletedCardView: View {
     @Binding var flipped : Bool
+    @Environment(\.colorScheme) var colorScheme
     var card : BulletedCard
     
     var body: some View {
         let flipDegrees = flipped ? 180.0 : 0
         return ZStack() {
             VStack {
-                Text(card.front).padding(.horizontal)
+                Text(card.front).padding(.horizontal).foregroundColor(.black)
                 ForEach(1..<card.bullets.count) { int in
                     HStack {
                         Image(systemName: "circle.fill")
@@ -24,7 +25,7 @@ struct BulletedCardView: View {
                     }
                 }
             }
-            .placedOnCard(Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
+            .placedOnCard(colorScheme == .dark ? Color.gray : Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
             VStack(alignment: .leading) {
                 ForEach(card.bullets, id: \.self) { bullet in
                     HStack {

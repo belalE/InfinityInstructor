@@ -9,11 +9,12 @@
 import SwiftUI
 
 struct CardView: View {
-    var card : Card
+    @Binding var card : Card
     @Binding var flipped : Bool
     
     var body: some View {
         if card.cardType == .regular {
+            print(card.cardType)
             return AnyView(RegularCardView(flipped: self.$flipped,card: card as! RegularCard))
         } else if card.cardType == .multipleChoice {
             return AnyView(MultipleChoiceView(flipped: self.$flipped,card: card as! MultipleChoiceCard))
@@ -31,6 +32,6 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: MultipleChoiceCard(id: 0, front: "2x = 6 ", score: 2, cardType: .multipleChoice, correct: "x = 3", incorrectOptions: ["x=2", "x=-2","x=-3"]), flipped: .constant(false))
+        CardView(card: .constant(MultipleChoiceCard(id: 0, front: "2x = 6 ", score: 2, cardType: .multipleChoice, correct: "x = 3", incorrectOptions: ["x=2", "x=-2","x=-3"])), flipped: .constant(false))
     }
 }

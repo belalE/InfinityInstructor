@@ -10,13 +10,14 @@ import SwiftUI
 
 struct AcronymCardView: View {
     @Binding var flipped : Bool
+    @Environment(\.colorScheme) var colorScheme
     var card : AcronymCard
     
     var body: some View {
         let flipDegrees = flipped ? 180.0 : 0
         return ZStack {
             VStack {
-                Text(card.front).padding(.horizontal)
+                Text(card.front).padding(.horizontal).foregroundColor(.black)
                 ForEach(card.meaning, id: \.self) { str in
                     HStack {
                         Text(String(str[str.startIndex]))
@@ -24,7 +25,7 @@ struct AcronymCardView: View {
                     }
                 }
             }
-            .placedOnCard(Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
+            .placedOnCard(colorScheme == .dark ? Color.gray : Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
             VStack {
                 ForEach(card.meaning, id: \.self) { str in
                     

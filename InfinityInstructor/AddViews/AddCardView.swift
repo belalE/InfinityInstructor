@@ -11,43 +11,40 @@ import SwiftUI
 struct AddCardView: View {
     @State var cardType : CardType
     @Binding var array : [Card]
-    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15).padding().foregroundColor(.blue)
-            VStack<AnyView> {
-                if self.cardType == .regular {
-                    
+            VStack {
+                CardTypeView(cardType: self.$cardType) //HERE IS THE PROBLEM - need to be binding, but not to THINGY
+                VStack<AnyView> {
+                    if self.cardType == .regular {
+                        print(self.$cardType)
+                        return AnyView(VStack(spacing: 20) {
+                            AddRegularCardView(front: "", back: "", array: self.$array)
+                        })
+                    } else if cardType == .multipleChoice {
+                        return AnyView(VStack(spacing: 20) {
+                            AddMCCardView(front: "", correct: "", incorrect1: "", incorrect2: "", incorrect3: "", array: self.$array)
+                        })
+                    } else if cardType == .bulleted {
+                        return AnyView(VStack(spacing: 20) {
+                            AddBulletedCardView(front: "", bullets: [], array: self.$array)
+                        })
+                    } else if cardType == .numbered {
+                        return AnyView(VStack(spacing: 20) {
+                            AddNumberedCardView(front: "", list: [], array: self.$array)
+                        })
+                    } else if cardType == .acronym {
+                        return AnyView(VStack(spacing: 20) {
+                            AddAcronymCardView(front: "", meaning: [], array: self.$array)
+                        })
+                    }
                     return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddRegularCardView(front: "", back: "", array: self.$array)
-                    })
-                } else if cardType == .multipleChoice {
-                    return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddMCCardView(front: "", correct: "", incorrect1: "", incorrect2: "", incorrect3: "", array: self.$array)
-                    })
-                } else if cardType == .bulleted {
-                    return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddBulletedCardView(front: "", bullets: [], array: self.$array)
-                    })
-                } else if cardType == .numbered {
-                    return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddNumberedCardView(front: "", list: [], array: self.$array)
-                    })
-                } else if cardType == .acronym {
-                    return AnyView(VStack(spacing: 20) {
-                        CardTypeView(cardType: self.$cardType)
-                        AddAcronymCardView(front: "", meaning: [], array: self.$array)
+                        AddImageCardView(front: "", array: self.$array)
                     })
                 }
-                return AnyView(VStack(spacing: 20) {
-                    CardTypeView(cardType: self.$cardType)
-                    AddImageCardView(front: "", array: self.$array)
-                })
             }
+            
         }
     }
 }

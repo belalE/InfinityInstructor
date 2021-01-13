@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct StudyView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Binding var set: StudySet
     @State var index: Int
     @State var flipped : Bool = false
@@ -27,21 +28,21 @@ struct StudyView: View {
             ZStack {
                 Rectangle()
                     .frame(width: 400, height: 10, alignment: .center)
-                    .foregroundColor(.white)
+                    .foregroundColor(colorScheme == .dark ? .black : .white)
                 Text("\(index + 1) / \(set.array.count)")
             }
             Spacer()
             ZStack {
                 Image("wood")
                     .resizable()
-                CardView(card: self.set.array[index], flipped: $flipped)
+                CardView(card: self.$set.array[index], flipped: $flipped)
             }
             Spacer()
             ZStack{
-                
+
                 Rectangle()
                     .frame(width: 300, height: 70, alignment: .center)
-                    .foregroundColor(.white)
+                    .foregroundColor(colorScheme == .dark ? .black : .white)
                 HStack {
                     Button(action: {
                         if self.flipped {

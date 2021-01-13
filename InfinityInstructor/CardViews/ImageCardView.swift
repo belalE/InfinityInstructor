@@ -10,12 +10,13 @@ import SwiftUI
 
 struct ImageCardView: View {
     @Binding var flipped : Bool
+    @Environment(\.colorScheme) var colorScheme
     var card : ImageCard
     
     var body: some View {
         let flipDegrees = flipped ? 180.0 : 0
         return ZStack {
-            Text(card.front).padding(.horizontal).placedOnCard(Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
+            Text(card.front).padding(.horizontal).placedOnCard(colorScheme == .dark ? Color.gray : Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0).foregroundColor(.black)
             Image(uiImage: card.image).padding(.horizontal).placedOnCard(scoreToColor(score: card.score)).flipRotate(-180 + flipDegrees).opacity(flipped ? 1.0 : 0.0).aspectRatio(contentMode: .fit)
         }
         .animation(.easeInOut(duration: 0.5))

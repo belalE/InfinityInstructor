@@ -73,6 +73,7 @@ func getEarliestDate(studyClass: Class) -> String {
         return "N/A"
     }
     print(studyClass.units[0].name)
+//    print(studyClass.units[0].sets[3].name)
     var setCount = 0
     for unit in studyClass.units {
         setCount += unit.sets.count

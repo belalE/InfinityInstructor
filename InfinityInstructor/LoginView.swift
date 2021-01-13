@@ -13,13 +13,11 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 struct LoginView: View {
-    @State private var email : String = ""
-    @State private var password : String = ""
-    @State private var name : String = ""
-    @State private var showingAlert = false
-    @State private var show_modal: Bool = false
-    @State private var pickerIndex : Int = 0
-    @State private var active : Bool = false
+    @State public var email : String = ""
+    @State public var password : String = ""
+    @State public var name : String = ""
+    @State public var pickerIndex : Int = 0
+    @State public var active : Bool = false
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -49,11 +47,11 @@ struct LoginView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 NavigationLink(destination: {
                             VStack{
-                                if self.pickerIndex == 0  {
+                                if self.pickerIndex == 0 && active  {
                                     ContentView(user: logIn())
                                         .navigationBarTitle("")
                                         .navigationBarHidden(true)
-                                } else {
+                                } else if active {
                                     ContentView(user: signUp())
                                         .navigationBarTitle("")
                                         .navigationBarHidden(true)
@@ -104,6 +102,7 @@ struct LoginView: View {
                 }
             }
         }
+        self.active.toggle()
         return OnlineUser(name: self.name, classes: [])
     }
     
@@ -118,16 +117,20 @@ struct LoginView: View {
         }
         let user = Auth.auth().currentUser
         if let user = user {
+            print(user.uid)
+            UserDefaults.standard.set(user.uid, forKey: "uid")
             //Setup Database
             let db = Firestore.firestore()
-            let docRef = db.collection("users").document(UserDefaults.standard.value(forKey: "uid") as! String)
+            let docRef = db.collection("users").document(user.uid)
             docRef.getDocument { (document, error) in
+                print("gettingdoc")
                 if let document = document {
+                    print("doc is doc")
                     do {
                         finalUser = try document.data(as: OnlineUser.self)
                         print(finalUser?.name)
                         print(finalUser?.classes)
-                        print("decoded ")
+                        print("decoded")
                     } catch {
                         print(error.localizedDescription)
                     }
@@ -136,6 +139,8 @@ struct LoginView: View {
                 }
             }
         }
+        self.active.toggle()
+        print(finalUser)
         return finalUser!
     }
 }

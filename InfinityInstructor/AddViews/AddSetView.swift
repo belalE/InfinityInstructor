@@ -36,12 +36,12 @@ struct AddSetView: View {
                         .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray))
                     PickerField("Select A Class", data: getNameArray(classes: classes), selectionIndex: self.$selectedClassIndex)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray).frame(width: 350, height: 50, alignment: .leading))
+                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray).frame(width: 290, height: 50, alignment: .leading))
                     PickerField("Select A Unit", data: getNameArray(units: self.classes[self.selectedClassIndex!].units), selectionIndex: self.$selectedUnitIndex)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray).frame(width: 350, height: 50, alignment: .leading))
+                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.gray).frame(width: 290, height: 50, alignment: .leading))
                     ForEach(self.array, id: \.id) { i in
-                        AddCardView(cardType: .regular, array: self.$array)
+                        AddCardView(cardType: .regular, array: self.$array) //HERE IS THE FOR EACH
                     }
                     Button(action: {
                         self.array.append(RegularCard(id: 0, front: "", score: 0, back: ""))

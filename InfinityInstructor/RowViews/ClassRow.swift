@@ -14,16 +14,16 @@ struct ClassRow: View {
         VStack(alignment: .leading) {
                 Text(verbatim: "Classes")
                     .font(.headline)
-                ScrollView(.horizontal){
-                    HStack(alignment: .top) {
+                ScrollView(.vertical){
+                    VStack(alignment: .center) {
                         ForEach(classes.indices) { idx in
                             ClassItem(studyClass: self.$classes[idx])
                                 .frame(width: 250)
-                                .padding(.trailing,10)
-                                .padding(.leading,10)
+                                .padding(.bottom,10)
+                                .padding(.top,10)
                         }
                     }
-                    .frame(height: 200, alignment: .center)
+//                    .frame(height: 200, alignment: .center)
                 }
             }
         .padding()

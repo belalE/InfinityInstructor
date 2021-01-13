@@ -10,13 +10,14 @@ import SwiftUI
 
 struct MultipleChoiceView: View {
     @Binding var flipped : Bool
+    @Environment(\.colorScheme) var colorScheme
     var card : MultipleChoiceCard
     
     var body: some View {
         let flipDegrees = flipped ? 180.0 : 0
         return ZStack() {
             VStack {
-                Text(card.front).padding(.horizontal)
+                Text(card.front).padding(.horizontal).foregroundColor(.black)
                 ForEach(shuffleOptions(card: card), id: \.self) { str in
                     Text(verbatim: str)
                     .foregroundColor(.white)
@@ -27,7 +28,7 @@ struct MultipleChoiceView: View {
                     
                 }
             }
-            .placedOnCard(Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
+            .placedOnCard(colorScheme == .dark ? Color.gray : Color.white).flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
             VStack {
                 Text(card.correct).padding(.horizontal)
                 .foregroundColor(.white)
